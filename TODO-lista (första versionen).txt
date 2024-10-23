@@ -27,7 +27,7 @@ Colletcion (Kolletion)
 - Implementera så att användare kan skapa, redigera eller ta bort kollektioner. 
 - Implementera sökfunktion så att användare kan söka bland kollektioner.
 ----
-- ColletcionTiem (Kolletion objekt)
+- ColletcionItem (Kolletion objekt)
 - Skapa klassen CollectionItem
 - Skapa förregisterade exempelobjekt
 - Implementera så att användare kan skapa, redigera eller ta bort objekt. 
