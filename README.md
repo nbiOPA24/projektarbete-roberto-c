@@ -15,18 +15,18 @@ User (Användare)
 - [ ] Implementera funktion för att lagra användaruppgifter
 ----
 Collection (Kollektion)
-- Skapa klassen Collection
-- Skapa förregisterade kollektioner
-- Implementera så att användare kan skapa, redigera eller ta bort kollektioner
-- Implementera sökfunktion så att användare kan söka bland kollektioner
-- Implementera funktion för att lagra kollektioner
+- [ ] Skapa klassen Collection
+- [ ] Skapa förregisterade kollektioner
+- [ ] Implementera så att användare kan skapa, redigera eller ta bort kollektioner
+- [ ] Implementera sökfunktion så att användare kan söka bland kollektioner
+- [ ] Implementera funktion för att lagra kollektioner
 ----
 CollectionItem (Kollektion objekt)
-- Skapa klassen CollectionItem
-- Skapa förregisterade exempelobjekt
-- Implementera så att användare kan skapa, redigera eller ta bort objekt
-- Implementera sökfunktion så att användare kan söka bland objekt
-- Implementera funktion för att lagra objekt
+- [ ] Skapa klassen CollectionItem
+- [ ] Skapa förregisterade exempelobjekt
+- [ ] Implementera så att användare kan skapa, redigera eller ta bort objekt
+- [ ] Implementera sökfunktion så att användare kan söka bland objekt
+- [ ] Implementera funktion för att lagra objekt
 ----
 Category (Kategori)
 - Skapa klassen Category
