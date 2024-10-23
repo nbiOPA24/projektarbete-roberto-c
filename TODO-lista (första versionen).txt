@@ -21,13 +21,13 @@ User (Användare)
 - Skapa egenskaper för användare som id, namn, e-post, användarnamn och lösenord.
 - Implementera funktion för att lagra användaruppgifter
 ----
-Colletcion (Kolletion)
+Collection (Kolletion)
 - Skapa klassen Collection
 - Skapa förregisterade kollektioner
 - Implementera så att användare kan skapa, redigera eller ta bort kollektioner. 
 - Implementera sökfunktion så att användare kan söka bland kollektioner.
 ----
-- ColletcionItem (Kolletion objekt)
+- CollectionItem (Kolletion objekt)
 - Skapa klassen CollectionItem
 - Skapa förregisterade exempelobjekt
 - Implementera så att användare kan skapa, redigera eller ta bort objekt. 
