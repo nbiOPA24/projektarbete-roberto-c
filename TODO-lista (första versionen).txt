@@ -14,7 +14,7 @@ Sök: Gör det enkelt att söka och hitta specifika objekt och samlingar.
 Visuell översikt: Användare ska kunna se sina samlingar i en snygg, enkel och översiktlig vy.
 
 TODO:
-Klasser att skap och vad dem ska göra:
+Klasser att skapa och vad dem ska göra:
 
 User (Användare)
 - Skapa klassen User (användare)
