@@ -18,7 +18,7 @@ Klasser att skapa och vad dem ska göra:
 
 User (Användare)
 - Skapa klassen User (användare)
-- Skapa egenskaper för användare som id, namn, e-post, användarnamn och lösenord.
+- Implementera så att en användare kan skapa, redigera eller ta bort ett användarkonto. 
 - Implementera funktion för att lagra användaruppgifter
 ----
 Collection (Kollektion)
