@@ -10,9 +10,9 @@ TODO:
 Klasser att skapa och vad dem ska göra:
 
 User (Användare)
-[ ] Skapa klassen User (användare)
-[ ] Implementera så att en användare kan skapa, redigera eller ta bort ett användarkonto
-[ ] Implementera funktion för att lagra användaruppgifter
+- [ ] Skapa klassen User (användare)
+- [ ] Implementera så att en användare kan skapa, redigera eller ta bort ett användarkonto
+- [ ] Implementera funktion för att lagra användaruppgifter
 ----
 Collection (Kollektion)
 - Skapa klassen Collection
