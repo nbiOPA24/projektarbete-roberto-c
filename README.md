@@ -29,7 +29,7 @@ CollectionItem (Kollektion objekt)
 - [ ] Implementera funktion för att lagra objekt
 ----
 Category (Kategori)
-- Skapa klassen Category
-- Skapa förregisterade kategorier
-- Implementera sökfunktion så att användare kan söka bland kategorier
-- Implementera funktion för att lagra kategorier
+- [ ] Skapa klassen Category
+- [ ] Skapa förregisterade kategorier
+- [ ] Implementera sökfunktion så att användare kan söka bland kategorier
+- [ ] Implementera funktion för att lagra kategorier
