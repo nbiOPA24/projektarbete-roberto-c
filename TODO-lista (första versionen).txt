@@ -1,0 +1,6 @@
+TODO-lista (första versionen)
+- Läs igenom uppgiftsbeskrivningen noggrant.
+- Skapa en idé för mitt projekt – vad ska den göra?
+- Diskutera din idé med Krister och få feedback.
+- Skapa ett repo på GitHub för projektet.
+- Commit första versionen av TODO-listan till GitHub
