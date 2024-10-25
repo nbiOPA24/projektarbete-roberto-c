@@ -1,2 +1,2 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Testing VSC changes!");
+Console.WriteLine("Testing VS changes!");
