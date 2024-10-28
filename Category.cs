@@ -5,7 +5,7 @@
     public string Description { get; set; }
 
     // läser och lägger till CollectionItem-objekt i listan. OBS: CollectionItem finns inte än
-    public List<ColletionItem> Items { get; set; }
+    public List<CollectionItem> Items { get; set; }
 
     // Lista för att spara kategorier
     private static List<Category> categories = new List<Category>();
@@ -15,7 +15,7 @@
         CategoryId = id;
         CategoryName = name;
         Description = description;
-        CollectionsItems = new List<CollectionItem>();
+        Items = new List<CollectionItem>();
     }
 
     // Likt CRUD
@@ -27,7 +27,7 @@
     }
 
     // Read
-    public static Category GetCatetegory(int id)
+    public static Category GetCategory(int id)
     {
         foreach (Category categori in categories) 
         {
@@ -60,7 +60,7 @@
             if (category.CategoryId == id)
             {
                 categories.Remove(category);
-                breat;
+                break;
             }
         }
     }
