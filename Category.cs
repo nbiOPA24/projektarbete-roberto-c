@@ -4,7 +4,7 @@
     public string CategoryName { get; set; }
     public string Description { get; set; }
 
-    // läser och lägger till CollectionItem-objekt i listan. OBS: CollectionItem finns inte än
+    // läser och lägger till CollectionItem-objekt i listan.
     public List<CollectionItem> Items { get; set; }
 
     // Lista för att spara kategorier
@@ -21,7 +21,7 @@
     // Likt CRUD
 
     // Create
-    public static void AddCatetegory(Category category) 
+    public static void AddCatetegory(Category category)
     {
         categories.Add(category);
     }
@@ -29,9 +29,9 @@
     // Read
     public static Category GetCategory(int id)
     {
-        foreach (Category categori in categories) 
+        foreach (Category category in categories)
         {
-            if (Category.CategoryId == id) 
+            if (category.CategoryId == id)
             {
                 return category;
             }
@@ -42,9 +42,9 @@
     // Upate. OBS: skall läggas till i diagrammet 
     public static void UpdateCategory(int id, string newName, string newDescription)
     {
-        foreach (Category category in categories) 
+        foreach (Category category in categories)
         {
-            if (category.CategoryId == id) 
+            if (category.CategoryId == id)
             {
                 category.CategoryName = newName;
                 category.Description = newDescription;
@@ -53,9 +53,9 @@
     }
 
     // Delete
-    public static void RemoveCategory(int id) 
+    public static void RemoveCategory(int id)
     {
-        foreach (Category category in categories) 
+        foreach (Category category in categories)
         {
             if (category.CategoryId == id)
             {
@@ -66,7 +66,7 @@
     }
 
     // Visa alla kategorier. OBS: skall läggas till i diagrammet 
-    public static List<Category> GetAll() 
+    public static List<Category> GetAll()
     {
         return categories;
     }
