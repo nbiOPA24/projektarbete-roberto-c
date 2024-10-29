@@ -1,10 +1,10 @@
 public enum ItemCondition
 {
-	Daligt,
+	Dåligt,
 	Hyfsad,
 	Bra,
 	MycketBra, //Mellanslag med PascalCase
-	Utmarkt
+	Utmärkt
 }
 
 public class CollectionItem
@@ -13,12 +13,12 @@ public class CollectionItem
 	public string ItemName { get; set; }
 	public string Description { get; set; }
 	public decimal ItemValue { get; set; }
-	public DateTime AddedDate { get; set; } // �ndra i referensnamnet
-	public ItemCondition Condition { get; set; } // �ndra till Enum i diagrammet
+	public DateTime AddedDate { get; set; }
+	public ItemCondition Condition { get; set; } // ändra till Enum i diagrammet
 	public string Notes { get; set; }
 	public List<Category> Categories { get; set; }
 
-	// Lista f�r att spara alla objekt
+	// Lista för att spara alla objekt
 	private static List<CollectionItem> items = new List<CollectionItem>();
 
 	public CollectionItem(int id, string name, string description, decimal itemValue, ItemCondition condition, string notes)
@@ -42,7 +42,7 @@ public class CollectionItem
 	}
 
 
-	// Read - Hämtar en item
+	// Read - Hämtar ett samlarobjekt
 	public static CollectionItem GetItem(int id)
 	{
 		foreach (CollectionItem item in items)
@@ -88,5 +88,18 @@ public class CollectionItem
 	public static List<CollectionItem> GetAll()
 	{
 		return items;
+	}
+
+	// Sätter uppskattad värde för ett samlarobjektet
+	public static void EstimatedValue(int id, decimal newValue) 
+	{
+		foreach (CollectionItem item in items) 
+		{
+			if (item.ItemId == id) 
+			{
+				item.ItemValue = newValue;
+				break;
+			}
+		}
 	}
 }
