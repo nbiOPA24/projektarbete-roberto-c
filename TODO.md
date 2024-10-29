@@ -10,7 +10,7 @@ TODO:
 Klasser att skapa och vad dem ska göra:
 
 User (Användare)
-- [ ] Skapa klassen User (användare)
+- [x] Skapa klassen User (användare)
 - [ ] Implementera så att en användare kan skapa, redigera eller ta bort ett användarkonto
 - [ ] Implementera funktion för att lagra användaruppgifter
 ----
@@ -22,14 +22,14 @@ Collection (Kollektion)
 - [ ] Implementera funktion för att lagra kollektioner
 ----
 CollectionItem (Kollektion objekt)
-- [ ] Skapa klassen CollectionItem
+- [x] Skapa klassen CollectionItem
 - [ ] Skapa förregisterade exempelobjekt
-- [ ] Implementera så att användare kan skapa, redigera eller ta bort objekt
-- [ ] Implementera sökfunktion så att användare kan söka bland objekt
+- [x] Implementera så att användare kan skapa, redigera eller ta bort objekt
+- [x] Implementera sökfunktion så att användare kan söka bland objekt
 - [ ] Implementera funktion för att lagra objekt
 ----
 Category (Kategori)
-- [ ] Skapa klassen Category
-- [ ] Skapa förregisterade kategorier
-- [ ] Implementera sökfunktion så att användare kan söka bland kategorier
+- [x] Skapa klassen Category
+- [x] Skapa förregisterade kategorier
+- [x] Implementera sökfunktion så att användare kan söka bland kategorier
 - [ ] Implementera funktion för att lagra kategorier
