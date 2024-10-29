@@ -1,7 +1,27 @@
-﻿class Program 
+﻿using TheCollectorApp;
+
+class Program
 {
-    static void Main() 
+    static void Main()
     {
+
+        //=== Testar klassen CollectionItem
+        CollectionItem itemBook = new CollectionItem(101, "Boken", "En bra bok som handlar om läsning", 199, ItemCondition.MycketBra, "Boken är lite sliten på första sidan");
+        CollectionItem itemMusic = new CollectionItem(201, "Filmen", "En film som handlar om film", 99, ItemCondition.Daligt, "Film är trasig och går inte att använda. Men är ett bra minne och kan ställas i bokhyllan.");
+
+        CollectionItem.AddItem(itemBook);
+        CollectionItem.AddItem(itemMusic);
+
+        Console.WriteLine("Alla samlarobjekt");
+        foreach (CollectionItem item in CollectionItem.GetAll())
+        {
+            Console.WriteLine($"ID: {item.ItemId}");
+            Console.WriteLine($"Name: {item.ItemName}");
+            Console.WriteLine($"Värde: {item.ItemValue}");
+            Console.WriteLine($"Skick: {item.Condition}");
+        }
+
+        /*
         // === Testar klassen Category ===
         Category book = new Category(101, "Böcker", "Min boksamling");
         Category film = new Category(202, "Filmer", "Min filmsamling");
@@ -19,5 +39,6 @@
             Console.WriteLine($"ID: {category.CategoryId}, Namn: {category.CategoryName}, Beskrivning: {category.Description}");
         }
         Console.ReadKey();
+        */
     }
 }

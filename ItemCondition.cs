@@ -1,8 +1,11 @@
-public enum ItemCondition
+namespace TheCollectorApp
 {
-    Daligt,
-    Hyfsad,
-    Bra,
-    MycketBra, //Mellanslag med PascalCase
-    Utmarkt
+    public enum ItemCondition
+    {
+        Daligt,
+        Hyfsad,
+        Bra,
+        MycketBra, //Mellanslag med PascalCase
+        Utmarkt
+    }
 }
