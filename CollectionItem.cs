@@ -1,12 +1,3 @@
-public enum ItemCondition
-{
-	Dåligt,
-	Hyfsad,
-	Bra,
-	MycketBra, //Mellanslag med PascalCase
-	Utmärkt
-}
-
 public class CollectionItem
 {
 	public int ItemId { get; set; }
