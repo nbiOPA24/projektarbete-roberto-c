@@ -1,25 +1,45 @@
-﻿using TheCollectorApp;
+﻿using System.Data.Common;
+using TheCollectorApp;
 
 class Program
 {
     static void Main()
     {
 
-        //=== Testar klassen CollectionItem
-        CollectionItem itemBook = new CollectionItem(101, "Boken", "En bra bok som handlar om läsning", 199, ItemCondition.MycketBra, "Boken är lite sliten på första sidan");
-        CollectionItem itemMusic = new CollectionItem(201, "Filmen", "En film som handlar om film", 99, ItemCondition.Daligt, "Film är trasig och går inte att använda. Men är ett bra minne och kan ställas i bokhyllan.");
+        //=== Testar klassen CollectionItem ===
 
+        CollectionItem itemBook = new CollectionItem(101, "Boken", "En bra bok som handlar om läsning", 199, ItemCondition.MycketBra, "Boken är lite sliten på första sidan.");
+        CollectionItem itemMusic = new CollectionItem(201, "Filmen", "En film som handlar om en film", 99, ItemCondition.Daligt, "Film är trasig och går inte att använda. Men är ett bra minne och kan ställas i bokhyllan.");
+        CollectionItem itemToy = new CollectionItem(301, "Musse pig figur", "En äldre figur från Disney", 1999, ItemCondition.Utmarkt, "Figuren har varit bevarad i en glasmonter på ett museum.");
+
+        // Lägg till samlarobjekt
         CollectionItem.AddItem(itemBook);
         CollectionItem.AddItem(itemMusic);
+        CollectionItem.AddItem(itemToy);
 
-        Console.WriteLine("Alla samlarobjekt");
-        foreach (CollectionItem item in CollectionItem.GetAll())
+        Console.WriteLine("Alla objekt innan remove metoden används");
+        VisaAllaObjekt();
+
+        Console.WriteLine("Tar bort objekt");
+        CollectionItem.RemoveItem(itemMusic.ItemId);
+
+        Console.WriteLine("Alla objekt efter remove metoden används");
+        VisaAllaObjekt();
+
+        static void VisaAllaObjekt()
         {
-            Console.WriteLine($"ID: {item.ItemId}");
-            Console.WriteLine($"Name: {item.ItemName}");
-            Console.WriteLine($"Värde: {item.ItemValue}");
-            Console.WriteLine($"Skick: {item.Condition}");
+            Console.WriteLine("Alla samlarobjekt:");
+            foreach (CollectionItem item in CollectionItem.GetAll())
+            {
+                Console.WriteLine($"ID: {item.ItemId}");
+                Console.WriteLine($"Name: {item.ItemName}");
+                Console.WriteLine($"Värde: {item.ItemValue}");
+                Console.WriteLine($"Skick: {item.Condition}");
+                Console.WriteLine($"Beskrivning: {item.Description}");
+                Console.WriteLine();
+            }
         }
+
 
         /*
         // === Testar klassen Category ===
