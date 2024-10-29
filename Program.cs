@@ -21,7 +21,7 @@ class Program
         VisaAllaObjekt();
 
         Console.WriteLine("Tar bort objekt");
-        CollectionItem.RemoveItem(itemMusic.ItemId);
+        CollectionItem.RemoveItem(201);
 
         Console.WriteLine("Alla objekt efter remove metoden används");
         VisaAllaObjekt();
