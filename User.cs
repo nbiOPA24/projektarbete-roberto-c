@@ -16,7 +16,7 @@ namespace TheCollectorApp
         // lista med kollektioner
         public List<Collection> Collections { set; get; }
 
-        // List med användare
+        // Lista med användare
         private static List<User> users = new List<User>();
 
         public User(int id, string firstName, string secondName, string userName, string password, string email)
