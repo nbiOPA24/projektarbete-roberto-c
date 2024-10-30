@@ -11,17 +11,17 @@ Klasser att skapa och vad dem ska göra:
 
 User (Användare)
 - [x] Skapa klassen User (användare)
-- [ ] Implementera så att en användare kan skapa, redigera eller ta bort ett användarkonto
+- [x] Implementera så att en användare kan skapa, redigera eller ta bort ett användarkonto
 - [ ] Implementera funktion för att lagra användaruppgifter
 ----
-Collection (Kollektion)
-- [ ] Skapa klassen Collection
-- [ ] Skapa förregisterade kollektioner
-- [ ] Implementera så att användare kan skapa, redigera eller ta bort kollektioner
+Collection (Samling)
+- [x] Skapa klassen Collection
+- [x] Skapa förregisterade kollektioner
+- [x] Implementera så att användare kan skapa, redigera eller ta bort kollektioner
 - [ ] Implementera sökfunktion så att användare kan söka bland kollektioner
 - [ ] Implementera funktion för att lagra kollektioner
 ----
-CollectionItem (Kollektion objekt)
+CollectionItem (Samlingsobjekt)
 - [x] Skapa klassen CollectionItem
 - [ ] Skapa förregisterade exempelobjekt
 - [x] Implementera så att användare kan skapa, redigera eller ta bort objekt
