@@ -1,7 +1,4 @@
-﻿using System.Data.Common;
-using TheCollectorApp;
-
-class Program
+﻿class Program
 {
     static void Main()
     {
