@@ -2,14 +2,14 @@ namespace TheCollectorApp
 {
     public enum CollectionType
     {
-        Frimarken,
-        Mynt,
-        Antikviteter,
-        Leksaker,
-        Konst,
-        Vin,
-        Sportprylar,
-        Musikprylar,
-        Smycken
+        Frimärkssamling,
+        Myntsamling,
+        Antikvitetssamling,
+        Leksakssamling,
+        Konstsamling,
+        Vinsamling,
+        Sportsamling,
+        Musiksamling,
+        Smyckesamling
     }
 }

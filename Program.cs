@@ -42,7 +42,7 @@ class Program
         Console.WriteLine("Testar inloggning för Anders");
         //Jämför användarnamn och lösenord 
         bool loginSuccess = user1.LoginUser("AndersTheWall", "malvakt123");
-        // Visar att användaren (Andreas) har lyckats logga in
+        // Visar att användaren (Anders) har lyckats logga in
         Console.WriteLine($"Lyckad inloggning! Välkommen, isInlogged är {loginSuccess}.");
         Console.WriteLine($"Användaren är inloggad: {user1.IsInlogged}");
         Console.WriteLine();
