@@ -5,6 +5,7 @@
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public string Description { get; set; }
+        public CategoryType Type { get; }
 
         // läser och lägger till CollectionItem-objekt i listan
         public List<CollectionItem> Items { get; set; }
@@ -12,15 +13,14 @@
         // Lista för att spara kategorier
         private static List<Category> categories = new List<Category>();
 
-        public Category(int id, string name, string description)
+        public Category(int id, string name, string description, CategoryType type)
         {
             CategoryId = id;
             CategoryName = name;
             Description = description;
+            Type = type;
             Items = new List<CollectionItem>();
         }
-
-        // Likt CRUD
 
         // Create
         public static void AddCatetegory(Category category)

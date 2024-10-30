@@ -2,7 +2,7 @@ namespace TheCollectorApp
 {
     public class Collection
     {
-        public int CollectionId { get; }// ID ska endast finnas på egna skapta samlingar och får ej ändras
+        public int CollectionId { get; }// ID ska endast finnas för egna skapta samlingar och får ej ändras
         public string Name { get; set; }
         public string Description { get; set; }
         public CollectionType Type { get; } // Olika typer av färdiga samlingar att välja mellan
