@@ -1,4 +1,6 @@
-﻿class Program
+﻿using TheCollectorApp;
+
+class Program
 {
     static void Main()
     {

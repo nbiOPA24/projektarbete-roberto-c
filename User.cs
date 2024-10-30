@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace TheCollectorApp
 {
     public class User
@@ -13,6 +15,7 @@ namespace TheCollectorApp
 
         // lista med kollektioner
         public List<Collection> Collections { set; get; }
+        
         // List med användare
         private static List<User> users = new List<User>();
 

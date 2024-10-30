@@ -1,13 +1,12 @@
 ﻿namespace TheCollectorApp
 {
-
     public class Category
     {
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public string Description { get; set; }
 
-        // läser och lägger till CollectionItem-objekt i listan.
+        // läser och lägger till CollectionItem-objekt i listan
         public List<CollectionItem> Items { get; set; }
 
         // Lista för att spara kategorier
