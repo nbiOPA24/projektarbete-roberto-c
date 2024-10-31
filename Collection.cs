@@ -1,7 +1,16 @@
+using System;
+using System.Collections.Generic;
+
 namespace TheCollectorApp
 {
     public class Collection
     {
+
+        private static int nextId = 1; // Ökar automatiskt med 1 för varje ny samling
+
+        //Lista för alla samlingar
+        private static List<Collection> collections = new List<Collection>();
+
         public int CollectionId { get; }// ID ska endast finnas för egna skapta samlingar och får ej ändras
         public string Name { get; set; }
         public string Description { get; set; }
@@ -10,11 +19,9 @@ namespace TheCollectorApp
         public DateTime CreateDate { get; }
         public User Owner { get; }
 
-        //Lista för alla samlingar
-        private static List<Collection> collections = new List<Collection>();
-
         public Collection(string name, string description, CollectionType type, User owner)
         {
+            CollectionId = nextId++; // Tilldelar nuvarande värdet. Sedan ökar den med ett steg
             Name = name;
             Description = description;
             Type = type;
@@ -26,8 +33,46 @@ namespace TheCollectorApp
         // CRUD metoder. Endast egna samlingar
 
         // Create
+        public static void AddCollection(Collection collection) 
+        {
+            collections.Add(collection);
+        }
+
         // Read
+        public static Collection GetCollection(int id) 
+        {
+            foreach (Collection collection in collections)
+            {
+                if (collection.CollectionId == id)
+                    return collection;
+            }
+            return null;
+        }
+
         // Update
+        public static void UpdateCollection(int id, string newName, string newDescription) 
+        {
+            foreach (Collection collection in collections) 
+            {
+                if (collection.CollectionId == id) 
+                {
+                    collection.Name = newName;
+                    collection.Description = newDescription;
+                }
+            }
+        }
+
         // Delete
+        public static void RemoveCollection(int id) 
+        {
+            foreach (Collection collection in collections) 
+            {
+                if (collection.CollectionId == id) 
+                {
+                    collections.Remove(collection);
+                    break;
+                }
+            }
+        }
     }
 }
