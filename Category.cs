@@ -68,7 +68,7 @@
         }
 
         // Visa alla kategorier. OBS: skall läggas till i diagrammet 
-        public static List<Category> GetAll()
+        public static List<Category> GetAllCategories()
         {
             return categories;
         }

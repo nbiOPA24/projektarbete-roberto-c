@@ -32,13 +32,11 @@ namespace TheCollectorApp
 
         // CRUD metoder. Endast egna samlingar
 
-        // Create
         public static void AddCollection(Collection collection) 
         {
             collections.Add(collection);
         }
 
-        // Read
         public static Collection GetCollection(int id) 
         {
             foreach (Collection collection in collections)
@@ -49,7 +47,6 @@ namespace TheCollectorApp
             return null;
         }
 
-        // Update
         public static void UpdateCollection(int id, string newName, string newDescription) 
         {
             foreach (Collection collection in collections) 
@@ -62,7 +59,6 @@ namespace TheCollectorApp
             }
         }
 
-        // Delete
         public static void RemoveCollection(int id) 
         {
             foreach (Collection collection in collections) 
