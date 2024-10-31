@@ -70,5 +70,11 @@ namespace TheCollectorApp
                 }
             }
         }
+
+        // retunerar alla samlingar
+        public static List<Collection> GetAllCollections() 
+        {
+            return collections;
+        }
     }
 }
