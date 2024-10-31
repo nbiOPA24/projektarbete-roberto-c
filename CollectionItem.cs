@@ -1,12 +1,16 @@
+using Microsoft.VisualBasic;
+
 namespace TheCollectorApp
 {
 	public class CollectionItem
 	{
-		public int ItemId { get; set; }
+		private static int nextId = 1; // Ökar automatiskt med 1 för varje ny samling
+
+        public int ItemId { get; }
 		public string ItemName { get; set; }
 		public string Description { get; set; }
 		public decimal ItemValue { get; set; }
-		public DateTime AddedDate { get; set; }
+		public DateTime AddedDate { get; }
 		public ItemCondition Condition { get; set; } // ändra till Enum i diagrammet
 		public string Notes { get; set; }
 		public List<Category> Categories { get; set; }
@@ -14,10 +18,10 @@ namespace TheCollectorApp
 		// Lista för att spara alla objekt
 		private static List<CollectionItem> items = new List<CollectionItem>();
 
-		public CollectionItem(int id, string name, string description, decimal itemValue, ItemCondition condition, string notes)
+		public CollectionItem(string name, string description, decimal itemValue, ItemCondition condition, string notes)
 		{
-			ItemId = id;
-			ItemName = name;
+			ItemId = nextId++; // Tilldelar nuvarande värdet. Sedan ökar den med ett steg
+            ItemName = name;
 			Description = description;
 			ItemValue = itemValue;
 			AddedDate = DateTime.Now;
@@ -26,29 +30,25 @@ namespace TheCollectorApp
 			Categories = new List<Category>();
 		}
 
-		// Likt CRUD
+		//CRUD
 
-		// Create
 		public static void AddItem(CollectionItem item)
 		{
 			items.Add(item);
 		}
 
 
-		// Read - Hämtar ett samlarobjekt
-		public static CollectionItem GetItem(int id)
+		public static CollectionItem? GetItem(int id)
 		{
 			foreach (CollectionItem item in items)
 			{
 				if (item.ItemId == id)
-				{
 					return item;
-				}
 			}
 			return null;
 		}
 
-		// Update
+
 		public static void UpdateItem(int id, string newName, string newDescription, decimal newValue, ItemCondition newCondition, string newNotes)
 		{
 			foreach (CollectionItem item in items)
@@ -64,7 +64,7 @@ namespace TheCollectorApp
 			}
 		}
 
-		// Delete
+
 		public static void RemoveItem(int id)
 		{
 			foreach (CollectionItem item in items)

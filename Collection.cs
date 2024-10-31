@@ -5,7 +5,6 @@ namespace TheCollectorApp
 {
     public class Collection
     {
-
         private static int nextId = 1; // Ökar automatiskt med 1 för varje ny samling
 
         //Lista för alla samlingar
@@ -15,9 +14,13 @@ namespace TheCollectorApp
         public string Name { get; set; }
         public string Description { get; set; }
         public CollectionType Type { get; } // Olika typer av färdiga samlingar att välja mellan
+        
         public List<CollectionItem> Items { get; set; }
+        
         public DateTime CreateDate { get; }
         public User Owner { get; }
+
+
 
         public Collection(string name, string description, CollectionType type, User owner)
         {
@@ -30,7 +33,7 @@ namespace TheCollectorApp
             Items = new List<CollectionItem>();
         }
 
-        // CRUD metoder. Endast egna samlingar
+        // CRUD metoder
 
         public static void AddCollection(Collection collection) 
         {
@@ -76,5 +79,15 @@ namespace TheCollectorApp
         {
             return collections;
         }
+
+        // === Item ===
+
+        public void AddItemToCollection(CollectionItem items) 
+        {
+            Items.Add(items);
+        }
+
+
+
     }
 }
