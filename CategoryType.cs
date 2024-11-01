@@ -2,14 +2,17 @@ namespace TheCollectorApp
 {
     public enum CategoryType
     {
-        Frimärke,
-        Mynt,
-        Antikvitet,
-        Leksak,
+        Böcker,
+        Filmer,
+        Musik,
+        Leksaker,
+        Spel,
         Konst,
-        Vin,
-        Sportpryl,
-        Musikpryl,
-        Smycke
+        Custom
+        /*     Frimärke,
+             Mynt,
+             Antikvitet,
+             Sportpryl,
+             Smycken*/
     }
 }

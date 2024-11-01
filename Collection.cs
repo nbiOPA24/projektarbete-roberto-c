@@ -20,8 +20,6 @@ namespace TheCollectorApp
         public DateTime CreateDate { get; }
         public User Owner { get; }
 
-
-
         public Collection(string name, string description, CollectionType type, User owner)
         {
             CollectionId = nextId++; // Tilldelar nuvarande värdet. Sedan ökar den med ett steg

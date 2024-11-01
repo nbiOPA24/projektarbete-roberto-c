@@ -5,6 +5,34 @@ class Program
 {
     static void Main()
     {
+
+        // === Testar klassen Category ===
+
+        Console.WriteLine("Alla standard kategorier");
+        foreach (var category in Category.GetStandardCategory())
+        {
+            Console.WriteLine($"ID: {category.CategoryId}");
+            Console.WriteLine($"Name: {category.CategoryName}");
+            Console.WriteLine($"Beskrivning: {category.Description}");
+            Console.WriteLine();
+        }
+
+        Category.AddCustomCatetegory("Mynt", "Exempel: Guldmynt, Kopparmynt, Mynthäften");
+        Category.AddCustomCatetegory("Smycken", "Exemepl: Klockor, Ringar, Halsband");
+
+
+        Console.WriteLine("=== Alla Kategorier: Standard och dem man skapat själv");
+        foreach (var category in Category.GetAllCategories())
+        {
+            Console.WriteLine($"ID: {category.CategoryId}");
+            Console.WriteLine($"Namn: {category.CategoryName}");
+            Console.WriteLine($"Beskrivning: {category.Description}");
+            Console.WriteLine($"Typ: {category.Type}");
+            Console.WriteLine();
+        }
+
+
+        /*
         // === Testar klassen User ===
 
         User user1 = new User("Anders", "Palla", "AndersTheWall", "malvakt123", "malvakt@mail.com");
@@ -105,28 +133,6 @@ class Program
                 Console.WriteLine();
             }
         }
-
-        // === Testar klassen Category ===
-        Category book = new Category(101, "Böcker", "Min boksamling");
-        Category film = new Category(202, "Filmer", "Min filmsamling");
-        Category music = new Category(303, "Musik", "Min Musiksamling");
-        Category toy = new Category(404, "Leksaker", "Min Leksaksamling");
-
-        Category.AddCatetegory(book);
-        Category.AddCatetegory(film);
-        Category.AddCatetegory(music);
-        Category.AddCatetegory(toy);
-
-        Console.WriteLine("Alla Kategorier:");
-        foreach (var category in Category.GetAll()) 
-        {
-            Console.WriteLine($"ID: {category.CategoryId}, Namn: {category.CategoryName}, Beskrivning: {category.Description}");
-        }
-        Console.ReadKey();
-
-
-
-
-                */
+*/
     }
 }

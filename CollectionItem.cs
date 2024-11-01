@@ -4,7 +4,7 @@ namespace TheCollectorApp
 {
 	public class CollectionItem
 	{
-		private static int nextId = 1; // Ökar automatiskt med 1 för varje ny samling
+		private static int nextId = 1; // Ökar automatiskt med 1 för varje ny samlingsobjekt
 
         public int ItemId { get; }
 		public string ItemName { get; set; }
@@ -30,7 +30,7 @@ namespace TheCollectorApp
 			Categories = new List<Category>();
 		}
 
-		//CRUD
+		//CRUD metoder
 
 		public static void AddItem(CollectionItem item)
 		{
