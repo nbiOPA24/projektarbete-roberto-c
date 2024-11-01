@@ -14,11 +14,13 @@ class Program
             Console.WriteLine($"ID: {category.CategoryId}");
             Console.WriteLine($"Name: {category.CategoryName}");
             Console.WriteLine($"Beskrivning: {category.Description}");
+            Console.WriteLine($"Typ: {category.Type}");
             Console.WriteLine();
         }
 
-        Category.AddCustomCatetegory("Mynt", "Exempel: Guldmynt, Kopparmynt, Mynthäften");
-        Category.AddCustomCatetegory("Smycken", "Exemepl: Klockor, Ringar, Halsband");
+        // Skapa egna kategorier
+        var customCategory1 = Category.AddCustomCatetegory("Mynt", "Exempel: Guldmynt, Kopparmynt, Mynthäften");
+        var customCategory2 = Category.AddCustomCatetegory("Smycken", "Exemepl: Klockor, Ringar, Halsband");
 
 
         Console.WriteLine("=== Alla Kategorier: Standard och dem man skapat själv");
@@ -31,6 +33,31 @@ class Program
             Console.WriteLine();
         }
 
+        // Kategori som skall ersätta customCategory1
+        Category.UpdateCategory(customCategory1.CategoryId, "Lyxklockor", "Exempel: Rolex, Omega");
+
+        Console.WriteLine("=== Alla Kategorier: Med uppdaterd kategori 7");
+        foreach (var category in Category.GetAllCategories())
+        {
+            Console.WriteLine($"ID: {category.CategoryId}");
+            Console.WriteLine($"Namn: {category.CategoryName}");
+            Console.WriteLine($"Beskrivning: {category.Description}");
+            Console.WriteLine($"Typ: {category.Type}");
+            Console.WriteLine();
+        }
+
+        //Ta bort Categori customCategory2
+        Category.RemoveCategory(customCategory2.CategoryId);
+
+        Console.WriteLine("=== Alla Kategorier: Utan kategori 8");
+        foreach (var category in Category.GetAllCategories())
+        {
+            Console.WriteLine($"ID: {category.CategoryId}");
+            Console.WriteLine($"Namn: {category.CategoryName}");
+            Console.WriteLine($"Beskrivning: {category.Description}");
+            Console.WriteLine($"Typ: {category.Type}");
+            Console.WriteLine();
+        }
 
         /*
         // === Testar klassen User ===
