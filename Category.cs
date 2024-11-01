@@ -2,19 +2,20 @@
 {
     public class Category
     {
-        // Privata egenskaper
+
         private static int nextId = 1;
-        // Lista för att spara kategorier
+        // Lista som lagrar alla kategorier (både fördefinierade och anpassade)
         private static List<Category> categories = new List<Category>();
 
         public int CategoryId { get; }
         public string CategoryName { get; set; }
         public string Description { get; set; }
         public CategoryType Type { get; }
-        // läser och lägger till CollectionItem-objekt i listan
+
+        // Lista över alla samlarobjekt som tillhör kategorin 
         public List<CollectionItem> Items { get; set; }
 
-        // === Färdiga kategorier ===
+        // En statisk konstrukor som skapar fördefinierade kategorier
         static Category()
         {
             categories.Add(new Category("Böcker", "Exempel: Inbunden, Häftad, Pocket, E-bok, Kartonnage", CategoryType.Böcker));
@@ -25,7 +26,7 @@
             categories.Add(new Category("Konst", "Exempel: Målning, Skulptur, Keramik, Textiler", CategoryType.Konst));
         }
 
-        // === Skapa egna kategorier ===
+        // publik konstrukor för att skapa en ny kategory
         public Category(string name, string description, CategoryType type)
         {
             CategoryId = nextId++;
@@ -35,7 +36,8 @@
             Items = new List<CollectionItem>();
         }
 
-        // CRUD-metoder för kategorier man skapar själv
+        // CRUD-metoder
+
         public static Category AddCustomCatetegory(string name, string description)
         {
             var category = new Category(name, description, CategoryType.Custom);
@@ -43,7 +45,7 @@
             return category;
         }
 
-        // Hämtar alla standard kategorier
+        // Hämtar alla fördefinierade kategorier
         public static List<Category> GetStandardCategory()
         {
             var standardCategory = new List<Category>();
@@ -57,7 +59,7 @@
             return standardCategory;
         }
 
-        // Hämta kategori med ID
+        // Hämtar en kategori baserat på ID
         public static Category? GetCategory(int id)
         {
             foreach (Category category in categories)
@@ -94,7 +96,7 @@
             }
         }
 
-        // Hämtar alla standard kategorier och dem man har skapat själv.
+        // Hämtar alla kategorier (både fördefinierade och anpassade)
         public static List<Category> GetAllCategories()
         {
             return categories;

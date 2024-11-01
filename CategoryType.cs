@@ -9,10 +9,5 @@ namespace TheCollectorApp
         Spel,
         Konst,
         Custom
-        /*     Frimärke,
-             Mynt,
-             Antikvitet,
-             Sportpryl,
-             Smycken*/
     }
 }
