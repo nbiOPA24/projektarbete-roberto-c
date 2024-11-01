@@ -4,24 +4,26 @@ namespace TheCollectorApp
 {
     public class User
     {
-        public int UserId { get; set; }
+        private static int nextId = 1;
+
+        public int UserId { get; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string UserName { get; set; }
-        public string Password { get; set; }
+        private string Password { get; set; } // Är private för att öka säkerhet
         public string Email { get; set; }
-        public DateTime RegistrationDate { get; set; }
+        public DateTime RegistrationDate { get; }
         public bool IsInlogged { get; set; }
 
         // lista med kollektioner
-        public List<Collection> Collections { set; get; }
+        public List<Collection> Collections { get; set; }
 
         // Lista med användare
         private static List<User> users = new List<User>();
 
-        public User(int id, string firstName, string secondName, string userName, string password, string email)
+        public User(string firstName, string secondName, string userName, string password, string email)
         {
-            UserId = id;
+            UserId = nextId++;
             FirstName = firstName;
             SecondName = secondName;
             UserName = userName;
@@ -34,14 +36,13 @@ namespace TheCollectorApp
 
         // Likt CRUD
 
-        // Skapar användare
         public static void AddUser(User user)
         {
             users.Add(user);
         }
 
-        // Läser användare
-        public static User GetUser(int id)
+
+        public static User? GetUser(int id)
         {
             foreach (User user in users)
             {
@@ -53,7 +54,6 @@ namespace TheCollectorApp
             return null;
         }
 
-        // Uppdaterar användare
         public static void UpdateUser(int id, string newFirstName, string newSecondName, string newUserName, string newPassword, string newEmail)
         {
             foreach (User user in users)
@@ -65,11 +65,11 @@ namespace TheCollectorApp
                     user.UserName = newUserName;
                     user.Password = newPassword;
                     user.Email = newEmail;
+                    break; //Avslutas om användaren hittas 
                 }
             }
         }
 
-        // Tar bort användare
         public static void RemoveUser(int id)
         {
             foreach (User user in users)
