@@ -12,15 +12,15 @@ class Program
         foreach (var category in Category.GetStandardCategory())
         {
             Console.WriteLine($"ID: {category.CategoryId}");
-            Console.WriteLine($"Name: {category.CategoryName}");
+            Console.WriteLine($"Namn: {category.CategoryName}");
             Console.WriteLine($"Beskrivning: {category.Description}");
             Console.WriteLine($"Typ: {category.Type}");
             Console.WriteLine();
         }
 
         // Skapa egna kategorier
-        var customCategory1 = Category.AddCustomCatetegory("Mynt", "Exempel: Guldmynt, Kopparmynt, Mynthäften");
-        var customCategory2 = Category.AddCustomCatetegory("Smycken", "Exemepl: Klockor, Ringar, Halsband");
+        var customCategory1 = Category.AddCustomCatetegory("Mynt & Numismatik", "Olika typer av mynt och sedlar: Guldmynt, Kopparmynt, Mynthäften");
+        var customCategory2 = Category.AddCustomCatetegory("Smycken & Ädelstenar", "Olika typer av smycken och accessoarer: Klockor, Ringar, Halsband");
 
 
         Console.WriteLine("=== Alla Kategorier: Standard och dem man skapat själv");
@@ -46,7 +46,7 @@ class Program
             Console.WriteLine();
         }
 
-        //Ta bort Categori customCategory2
+        //Ta bort kategori customCategory2
         Category.RemoveCategory(customCategory2.CategoryId);
 
         Console.WriteLine("=== Alla Kategorier: Utan kategori 8");
