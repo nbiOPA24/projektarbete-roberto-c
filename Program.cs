@@ -5,88 +5,91 @@ class Program
 {
     static void Main()
     {
-        // === Testar klassen Category ===
+        //=== Testar klassen CollectionItem ===
 
-        Console.WriteLine("=== Alla fördefinierade kategorier (1-6)===");
-        foreach (var category in Category.GetAllStandardCategories())
+        var item1 = new CollectionItem("En man som heter Ove", "En svensk roman om en surmulen äldre man som sakta dras in i grannarnas liv och blir påverkad av deras värme och vänlighet. ", 199, ItemCondition.MycketBra, "Boken är lite sliten på den första sidan.");
+        var item2 = new CollectionItem("The Matrix", "Filmen är en sci-fi-film där en hacker upptäcker att verkligheten är en simulering styrd av maskiner, och han måste kämpa för mänsklighetens frihet.", 99, ItemCondition.Dåligt, "Film är trasig och går inte att använda. Men är ett bra minne och kan ställas i bokhyllan.");
+        var item3 = new CollectionItem("Musse Pigg-figur: Limited Edition-figurer:", "Speciella samlarobjekt som producerats i begränsad upplaga, ofta av företag som Disney Store eller Hallmark.", 19999, ItemCondition.Utmärkt, "Figuren har varit bevarad i en glasmonter på ett museum.");
+
+        // Lägg till samlarobjekt
+        CollectionItem.AddItem(item1);
+        CollectionItem.AddItem(item2);
+        CollectionItem.AddItem(item3);
+
+        Console.WriteLine("=== Alla samlarobjekt ===");
+        foreach (var item in CollectionItem.GetAllItems())
         {
-            ShowCategoriesInfo(category);
+            ShowAllItemInfo(item);
         }
-
-        // Skapa egna kategorier
-        Console.WriteLine("=== Skapar egna kategorier (7, 8, 9) ===");
-
-        var customCategory1 = Category.AddCustomCategory("Mynt & Numismatik", "Olika typer av mynt och sedlar: Guldmynt, Kopparmynt, Mynthäften");
-        var customCategory2 = Category.AddCustomCategory("Smycken & Ädelstenar", "Olika typer av smycken och accessoarer: Klockor, Ringar, Halsband");
-        var customCategory3 = Category.AddCustomCategory("Motorcyklar", "Olika typer av motorcyklar: Sportmotorcyklar, Cruisers, Touringmotorcyckel");
         Console.WriteLine();
 
-        Console.WriteLine("=== Alla Kategorier: Fördefinierade och anpassade (1-9) ===");
-        foreach (var category in Category.GetAllCategories())
+        Console.WriteLine("=== Hämtar samlarobjekt basert på namn (The Matrix) ===");
+        foreach (var item in CollectionItem.GetItemByName("The Matrix"))
         {
-            ShowCategoriesInfo(category);
+            ShowAllItemInfo(item);
         }
-
-        Console.WriteLine("=== Hämta kategorier basert på namn (Mynt) ===");
-        foreach (var category in Category.GetCategoryByName("Mynt"))
-        {
-            ShowCategoriesInfo(category);
-        }
-
-        Console.WriteLine("=== Hämta kategori baserat på id (2) ===");
-        foreach (var category in Category.GetCategoryById(2))
-        {
-            ShowCategoriesInfo(category);
-            Console.WriteLine();
-        }
-
-        // Kategori som skall ersätta customCategory1
-        Console.WriteLine("=== Uppdatera kategori (7) baserat namn ===");
-        Category.UpdateCategoryByName(customCategory1.CategoryName, "Lyxklockor", "Exempel: Sportklockor, Dressklockor");
-
-        Console.WriteLine("=== Alla Kategorier: Med uppdaterd kategori 7 ===");
-
-        foreach (var category in Category.GetAllCategories())
-        {
-            ShowCategoriesInfo(category);
-        }
-
-        // Kategori som skall ersätta customCategory2
-        Console.WriteLine("=== Uppdatera kategori (8) baserat ID ===");
-        Category.UpdateCategoryById(customCategory2.CategoryId, "Skor", "Exempel: Vardagsskor, Träningskor, Finskor");
         Console.WriteLine();
 
-        Console.WriteLine("=== Alla Kategorier: Med uppdaterd kategori 7");
-        foreach (var category in Category.GetAllCategories())
+        Console.WriteLine("=== Hämtar samlarobjekt baserat på ID (1) ===");
+        foreach (var item in CollectionItem.GetItemById(1))
         {
-            ShowCategoriesInfo(category);
+            ShowAllItemInfo(item);
+        }
+        Console.WriteLine();
+
+        // Samlarobjekt som skall ersätta item1
+        Console.WriteLine("=== Uppdatera samlarobjekt (1) baserat på namn ===");
+        CollectionItem.UpdateItemByName(item1.ItemName, "Så som i himmelen", "En rörande dramakomedi om en berömd dirigent som återvänder till sin hemby och förändrar livet för invånarna där", 100, ItemCondition.Hyfsad, "Fodralet saknas.");
+        Console.WriteLine("=== Alla Samlarobjekt: Uppdaterd baserat på namn ===");
+        foreach (var item in CollectionItem.GetAllItems())
+        {
+            ShowAllItemInfo(item);
         }
 
-        //Ta bort kategori baserat på namn
-        Category.RemoveCategoryByName(customCategory2.CategoryName);
+        // Samlarobjekt som skall ersätta item2
+        Console.WriteLine("=== Uppdatera samlarobjekt (2) baserat på ID ===");
+        CollectionItem.UpdateItemById(item2.ItemId, "Blade Runner", "En uppföljare till den klassiska Blade Runner, som utforskar frågor om mänsklighet och identitet i en dystopisk framtid.", 50, ItemCondition.Dåligt, "DVD-skivan är repad.");
 
-        Console.WriteLine("=== Alla Kategorier: Utan kategori 8");
-        foreach (var category in Category.GetAllCategories())
+        Console.WriteLine("=== Alla Samlarobjekt: Uppdaterd baserat på namn ===");
+        foreach (var item in CollectionItem.GetAllItems())
         {
-            ShowCategoriesInfo(category);
+            ShowAllItemInfo(item);
         }
 
-        // Ta bort kategori baserat på ID
-        Category.RemoveCategoryById(customCategory1.CategoryId);
-        Console.WriteLine("=== Alla Kategorier: Utan kategori 7");
-        foreach (var category in Category.GetAllCategories())
+        //Ta bort samlarobjekt baserat på namn
+        CollectionItem.RemoveItemByName(item2.ItemName);
+        Console.WriteLine("=== Alla samlarobjekt: Utan item2 ===");
+        foreach (var item in CollectionItem.GetAllItems())
         {
-            ShowCategoriesInfo(category);
+            ShowAllItemInfo(item);
+        }
+
+        // Ta bort samlarobjekt baserat på ID
+        CollectionItem.RemoveItemById(item3.ItemId);
+        Console.WriteLine("=== Alla samlarobjekt: Utan item3 ===");
+        foreach (var item in CollectionItem.GetAllItems())
+        {
+            ShowAllItemInfo(item);
+        }
+
+        decimal newValue = 500;
+        Console.WriteLine($"Uppdaterat värdet till {newValue} på samlarobjekt item1");
+        CollectionItem.EstimatedOwnValue(item1.ItemId, newValue);
+        foreach (var item in CollectionItem.GetAllItems())
+        {
+            ShowAllItemInfo(item);
         }
     }
 
-    // Metod för att hämta info om alla kategorier
-    private static void ShowCategoriesInfo(Category category)
+    // Metod för att hämta info om alla samlarobjekt
+    private static void ShowAllItemInfo(CollectionItem item)
     {
-        Console.WriteLine($"ID: {category.CategoryId}");
-        Console.WriteLine($"Name: {category.CategoryName}");
-        Console.WriteLine($"Beskrivning: {category.Description}");
-        Console.WriteLine($"Typ: {category.Type}");
+        Console.WriteLine($"ID: {item.ItemId}");
+        Console.WriteLine($"Name: {item.ItemName}");
+        Console.WriteLine($"Beskrivning: {item.Description}");
+        Console.WriteLine($"Värde: {item.ItemValue}");
+        Console.WriteLine($"Skick: {item.Condition}");
+        Console.WriteLine($"Anteckningar: {item.Notes}");
         Console.WriteLine();
     }
 
@@ -159,39 +162,93 @@ class Program
     }
 
     /*
-    //=== Testar klassen CollectionItem ===
-    var item1 = new CollectionItem("Boken", "En bra bok som handlar om läsning", 199, ItemCondition.MycketBra, "Boken är lite sliten på första sidan.");
-    var item2 = new CollectionItem("Filmen", "En film som handlar om en film", 99, ItemCondition.Daligt, "Film är trasig och går inte att använda. Men är ett bra minne och kan ställas i bokhyllan.");
-    var item3 = new CollectionItem("Musse pig figur", "En äldre figur från Disney", 1999, ItemCondition.Utmarkt, "Figuren har varit bevarad i en glasmonter på ett museum.");
 
-    // Lägg till samlarobjekt
-    CollectionItem.AddItem(item1);
-    CollectionItem.AddItem(item2);
-    CollectionItem.AddItem(item3);
 
-    Console.WriteLine("Alla objekt innan remove metoden används");
-    VisaAllaObjekt();
+            // === Testar klassen Category ===
 
-    Console.WriteLine("Tar bort objekt");
-    CollectionItem.RemoveItem(1);
-
-    Console.WriteLine("Alla objekt efter remove metoden används");
-    VisaAllaObjekt();
-
-    static void VisaAllaObjekt()
-    {
-        Console.WriteLine("Alla samlarobjekt:");
-        foreach (CollectionItem item in CollectionItem.GetAll())
+        Console.WriteLine("=== Alla fördefinierade kategorier (1-6)===");
+        foreach (var category in Category.GetAllStandardCategories())
         {
-            Console.WriteLine($"ID: {item.ItemId}");
-            Console.WriteLine($"Name: {item.ItemName}");
-            Console.WriteLine($"Beskrivning: {item.Description}");
-            Console.WriteLine($"Värde: {item.ItemValue}");
-            Console.WriteLine($"Skick: {item.Condition}");
-            Console.WriteLine($"Anteckningar: {item.Notes}");
+            ShowCategoriesInfo(category);
+        }
+
+        // Skapa egna kategorier
+        Console.WriteLine("=== Skapar egna kategorier (7, 8, 9) ===");
+
+        var customCategory1 = Category.AddCustomCategory("Mynt & Numismatik", "Olika typer av mynt och sedlar: Guldmynt, Kopparmynt, Mynthäften");
+        var customCategory2 = Category.AddCustomCategory("Smycken & Ädelstenar", "Olika typer av smycken och accessoarer: Klockor, Ringar, Halsband");
+        var customCategory3 = Category.AddCustomCategory("Motorcyklar", "Olika typer av motorcyklar: Sportmotorcyklar, Cruisers, Touringmotorcyckel");
+        Console.WriteLine();
+
+        Console.WriteLine("=== Alla Kategorier: Fördefinierade och anpassade (1-9) ===");
+        foreach (var category in Category.GetAllCategories())
+        {
+            ShowCategoriesInfo(category);
+        }
+
+        Console.WriteLine("=== Hämta kategorier basert på namn (Mynt) ===");
+        foreach (var category in Category.GetCategoryByName("Mynt"))
+        {
+            ShowCategoriesInfo(category);
+        }
+
+        Console.WriteLine("=== Hämta kategori baserat på ID (2) ===");
+        foreach (var category in Category.GetCategoryById(2))
+        {
+            ShowCategoriesInfo(category);
             Console.WriteLine();
         }
+
+        // Kategori som skall ersätta customCategory1
+        Console.WriteLine("=== Uppdatera kategori (7) baserat på namn ===");
+        Category.UpdateCategoryByName(customCategory1.CategoryName, "Lyxklockor", "Exempel: Sportklockor, Dressklockor");
+
+        Console.WriteLine("=== Alla Kategorier: Med uppdaterd kategori 7 ===");
+
+        foreach (var category in Category.GetAllCategories())
+        {
+            ShowCategoriesInfo(category);
+        }
+
+        // Kategori som skall ersätta customCategory2
+        Console.WriteLine("=== Uppdatera kategori (8) baserat på ID ===");
+        Category.UpdateCategoryById(customCategory2.CategoryId, "Skor", "Exempel: Vardagsskor, Träningskor, Finskor");
+        Console.WriteLine();
+
+        Console.WriteLine("=== Alla Kategorier: Med uppdaterd kategori 7");
+        foreach (var category in Category.GetAllCategories())
+        {
+            ShowCategoriesInfo(category);
+        }
+
+        //Ta bort kategori baserat på namn
+        Category.RemoveCategoryByName(customCategory2.CategoryName);
+
+        Console.WriteLine("=== Alla Kategorier: Utan kategori 8");
+        foreach (var category in Category.GetAllCategories())
+        {
+            ShowCategoriesInfo(category);
+        }
+
+        // Ta bort kategori baserat på ID
+        Category.RemoveCategoryById(customCategory1.CategoryId);
+        Console.WriteLine("=== Alla Kategorier: Utan kategori 7");
+        foreach (var category in Category.GetAllCategories())
+        {
+            ShowCategoriesInfo(category);
+        }
+    }
+
+    // Metod för att hämta info om alla kategorier
+    private static void ShowCategoriesInfo(Category category)
+    {
+        Console.WriteLine($"ID: {category.CategoryId}");
+        Console.WriteLine($"Name: {category.CategoryName}");
+        Console.WriteLine($"Beskrivning: {category.Description}");
+        Console.WriteLine($"Typ: {category.Type}");
+        Console.WriteLine();
     }
 */
 }
+
 
