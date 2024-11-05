@@ -2,7 +2,6 @@
 {
     public class Category
     {
-
         private static int nextId = 1;
         // Lista som lagrar alla kategorier (både fördefinierade och anpassade)
         private static List<Category> categories = new List<Category>();
@@ -18,15 +17,15 @@
         // En statisk konstrukor som skapar fördefinierade kategorier
         static Category()
         {
-            categories.Add(new Category("Böcker", "Exempel: Inbunden, Häftad, Pocket, E-bok, Kartonnage", CategoryType.Böcker));
-            categories.Add(new Category("Filmer", "Exempel: DVD, Blue-ray, VHS, LaserDisc, Betamax", CategoryType.Filmer));
-            categories.Add(new Category("Musik", "Exemepl: Vinylskiva, Kassettband, CD, MiniDisc", CategoryType.Musik));
-            categories.Add(new Category("Leksaker", "Exemepl: LEGO, Figurer, Dockor, Pussel:", CategoryType.Leksaker));
-            categories.Add(new Category("Spel", "Exempel: TV-spel, Datorspel, Brädspel", CategoryType.Spel));
-            categories.Add(new Category("Konst", "Exempel: Målning, Skulptur, Keramik, Textiler", CategoryType.Konst));
+            categories.Add(new Category("Litteratur & Böcker", "Olika format av litterära verk: Inbunden, Häftad, Pocket, E-bok, Kartonnage", CategoryType.Böcker));
+            categories.Add(new Category("Film & Video", "Film- och videoformat: DVD, Blu-ray, VHS, LaserDisc, Betamax", CategoryType.Filmer));
+            categories.Add(new Category("Musik & Ljudmedier", "Musikformat och ljudmedier: Vinylskiva, Kassettband, CD, MiniDisc", CategoryType.Musik));
+            categories.Add(new Category("Leksaker & Figurer", "Olika typer av leksaker: LEGO, Figurer, Dockor, Pussel:", CategoryType.Leksaker));
+            categories.Add(new Category("Spel & Interaktiv Media", "Digitala och analoga spel: TV-spel, Datorspel, Brädspel", CategoryType.Spel));
+            categories.Add(new Category("Konst & Konsthantverk", "Olika konstformer: Målning, Skulptur, Keramik, Textiler", CategoryType.Konst));
         }
 
-        // publik konstrukor för att skapa en ny kategory
+        // Publik konstrukor för att skapa en ny kategori
         public Category(string name, string description, CategoryType type)
         {
             CategoryId = nextId++;
@@ -36,9 +35,8 @@
             Items = new List<CollectionItem>();
         }
 
-        // CRUD-metoder
-
-        public static Category AddCustomCatetegory(string name, string description)
+        // Lägger till en kategori till listan av kategorier
+        public static Category AddCustomCategory(string name, string description)
         {
             var category = new Category(name, description, CategoryType.Custom);
             categories.Add(category);
@@ -46,9 +44,10 @@
         }
 
         // Hämtar alla fördefinierade kategorier
-        public static List<Category> GetStandardCategory()
+        public static List<Category> GetAllStandardCategories()
         {
             var standardCategory = new List<Category>();
+
             foreach (var category in categories)
             {
                 if (category.Type != CategoryType.Custom)
@@ -59,20 +58,52 @@
             return standardCategory;
         }
 
-        // Hämtar en kategori baserat på ID
-        public static Category? GetCategory(int id)
+        // Hämtar en kategori baserat på namn
+        public static List<Category> GetCategoryByName(string name)
         {
+            var categoryName = new List<Category>();
+
+            foreach (Category category in categories)
+            {
+                if (category.CategoryName.Contains(name))
+                {
+                    categoryName.Add(category);
+                }
+            }
+            return categoryName;
+        }
+
+        // Hämtar en kategori baserat på ID
+        public static List<Category> GetCategoryById(int id)
+        {
+            var categoryId = new List<Category>();
+
             foreach (Category category in categories)
             {
                 if (category.CategoryId == id)
                 {
-                    return category;
+                    categoryId.Add(category);
                 }
             }
-            return null;
+            return categoryId;
         }
 
-        public static void UpdateCategory(int id, string newName, string newDescription)
+        public static void UpdateCategoryByName(string name, string newName, string newDescription)
+        {
+
+            foreach (Category category in categories)
+            {
+                if (category.CategoryName == name)
+                {
+                    category.CategoryName = newName;
+                    category.Description = newDescription;
+                    break;
+                }
+            }
+        }
+
+        // Uppdatera kategori baserat på id
+        public static void UpdateCategoryById(int id, string newName, string newDescription)
         {
             foreach (Category category in categories)
             {
@@ -84,7 +115,21 @@
             }
         }
 
-        public static void RemoveCategory(int id)
+        // Tar bort kategori baserat på namn
+        public static void RemoveCategoryByName(string name)
+        {
+            foreach (Category category in categories)
+            {
+                if (category.CategoryName == name)
+                {
+                    categories.Remove(category);
+                    break;
+                }
+            }
+        }
+
+        // Ta bort kategori baserat på id
+        public static void RemoveCategoryById(int id)
         {
             foreach (Category category in categories)
             {
