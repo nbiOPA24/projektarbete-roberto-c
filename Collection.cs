@@ -10,20 +10,21 @@ namespace TheCollectorApp
         //Lista för alla samlingar
         private static List<Collection> collections = new List<Collection>();
 
-        public int CollectionId { get; }// ID ska endast finnas för egna skapta samlingar och får ej ändras
-        public string Name { get; set; }
+        public int CollectionId { get; }
+        public string CollectionName { get; set; }
         public string Description { get; set; }
-        public CollectionType Type { get; } // Olika typer av färdiga samlingar att välja mellan
-        
+        // Olika typer av färdiga samlingar att välja mellan
+        public CollectionType Type { get; }
+
         public List<CollectionItem> Items { get; set; }
-        
+
         public DateTime CreateDate { get; }
         public User Owner { get; }
 
-        public Collection(string name, string description, CollectionType type, User owner)
+        public Collection(string collectionName, string description, CollectionType type, User owner)
         {
             CollectionId = nextId++; // Tilldelar nuvarande värdet. Sedan ökar den med ett steg
-            Name = name;
+            CollectionName = collectionName;
             Description = description;
             Type = type;
             Owner = owner;
@@ -31,14 +32,25 @@ namespace TheCollectorApp
             Items = new List<CollectionItem>();
         }
 
-        // CRUD metoder
-
-        public static void AddCollection(Collection collection) 
+        // Lägger till en samling
+        public static void AddCollection(Collection collection)
         {
             collections.Add(collection);
         }
 
-        public static Collection GetCollection(int id) 
+        // Hämtar samling baserat på namn
+        public static Collection GetCollectionByName(string name)
+        {
+            foreach (Collection collection in collections)
+            {
+                if (collection.CollectionName == name)
+                    return collection;
+            }
+            return null;
+        }
+
+        // Hämtar samling baserat på ID
+        public static Collection GetCollectionById(int id)
         {
             foreach (Collection collection in collections)
             {
@@ -48,23 +60,38 @@ namespace TheCollectorApp
             return null;
         }
 
-        public static void UpdateCollection(int id, string newName, string newDescription) 
+        // Uppdaterar samling baserat namn
+        public static void UpdateCollectionByName(string name, string newCollectionName, string newDescription)
         {
-            foreach (Collection collection in collections) 
+            foreach (Collection collection in collections)
             {
-                if (collection.CollectionId == id) 
+                if (collection.CollectionName == name)
                 {
-                    collection.Name = newName;
+                    collection.CollectionName = newCollectionName;
                     collection.Description = newDescription;
                 }
             }
         }
 
-        public static void RemoveCollection(int id) 
+        // Uppdaterar samling baserat på ID
+        public static void UpdateCollectionById(int id, string newCollectionName, string newDescription)
         {
-            foreach (Collection collection in collections) 
+            foreach (Collection collection in collections)
             {
-                if (collection.CollectionId == id) 
+                if (collection.CollectionId == id)
+                {
+                    collection.CollectionName = newCollectionName;
+                    collection.Description = newDescription;
+                }
+            }
+        }
+
+        // Tar bort samling baserat på namn
+        public static void RemoveCollectionByName(string name)
+        {
+            foreach (Collection collection in collections)
+            {
+                if (collection.CollectionName == name)
                 {
                     collections.Remove(collection);
                     break;
@@ -72,20 +99,31 @@ namespace TheCollectorApp
             }
         }
 
-        // retunerar alla samlingar
-        public static List<Collection> GetAllCollections() 
+        // Tar bort samling baserat på ID
+        public static void RemoveCollectionById(int id)
+        {
+            foreach (Collection collection in collections)
+            {
+                if (collection.CollectionId == id)
+                {
+                    collections.Remove(collection);
+                    break;
+                }
+            }
+        }
+
+        // Hämtar alla samlingar
+        public static List<Collection> GetAllCollections()
         {
             return collections;
         }
 
-        // === Item ===
+        // === Samlarobjekt ===
 
-        public void AddItemToCollection(CollectionItem items) 
+        // Lägger till samlarobjekt till samling
+        public void AddItemToCollection(CollectionItem items)
         {
             Items.Add(items);
         }
-
-
-
     }
 }
