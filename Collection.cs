@@ -39,28 +39,36 @@ namespace TheCollectorApp
         }
 
         // Hämtar samling baserat på namn
-        public static Collection GetCollectionByName(string name)
+        public static List<Collection> GetCollectionByName(string name)
         {
+            var collectionName = new List<Collection>();
+
             foreach (Collection collection in collections)
             {
-                if (collection.CollectionName == name)
-                    return collection;
+                if (collection.CollectionName.Contains(name))
+                {
+                    collectionName.Add(collection);
+                }
             }
-            return null;
+            return collectionName;
         }
 
         // Hämtar samling baserat på ID
-        public static Collection GetCollectionById(int id)
+        public static List<Collection> GetCollectionById(int id)
         {
+            var collectionId = new List<Collection>();
+
             foreach (Collection collection in collections)
             {
                 if (collection.CollectionId == id)
-                    return collection;
+                {
+                    collectionId.Add(collection);
+                }
             }
-            return null;
+            return collectionId;
         }
 
-        // Uppdaterar samling baserat namn
+        // Uppdaterar samling baserat på namn
         public static void UpdateCollectionByName(string name, string newCollectionName, string newDescription)
         {
             foreach (Collection collection in collections)
