@@ -35,7 +35,7 @@
             Items = new List<CollectionItem>();
         }
 
-        // Lägger till en kategori till listan av kategorier
+        // Lägger till en anpassad kategori till listan av kategorier
         public static Category AddCustomCategory(string name, string description)
         {
             var category = new Category(name, description, CategoryType.Custom);
@@ -77,7 +77,6 @@
         public static List<Category> GetCategoryById(int id)
         {
             var categoryId = new List<Category>();
-
             foreach (Category category in categories)
             {
                 if (category.CategoryId == id)
@@ -88,9 +87,9 @@
             return categoryId;
         }
 
+        // Uppdaterar en kategori baserat på namn
         public static void UpdateCategoryByName(string name, string newName, string newDescription)
         {
-
             foreach (Category category in categories)
             {
                 if (category.CategoryName == name)
@@ -102,7 +101,7 @@
             }
         }
 
-        // Uppdatera kategori baserat på id
+        // Uppdaterar en kategori baserat på ID
         public static void UpdateCategoryById(int id, string newName, string newDescription)
         {
             foreach (Category category in categories)
@@ -128,7 +127,7 @@
             }
         }
 
-        // Ta bort kategori baserat på id
+        // Ta bort kategori baserat på ID
         public static void RemoveCategoryById(int id)
         {
             foreach (Category category in categories)

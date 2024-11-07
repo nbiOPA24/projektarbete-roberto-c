@@ -7,7 +7,7 @@ namespace TheCollectorApp
         Antikvitetssamling,
         Leksakssamling,
         Konstsamling,
-        Vinsamling,
+        Filmsamling,
         Sportsamling,
         Musiksamling,
         Smyckesamling

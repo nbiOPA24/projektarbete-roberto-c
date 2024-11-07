@@ -2,10 +2,10 @@ namespace TheCollectorApp
 {
     public enum ItemCondition
     {
-        Daligt,
+        Dåligt,
         Hyfsad,
         Bra,
-        MycketBra, //Mellanslag med PascalCase
-        Utmarkt
+        MycketBra,
+        Utmärkt
     }
 }

@@ -91,7 +91,7 @@ namespace TheCollectorApp
                     user.UserName = newUserName;
                     user.Password = newPassword;
                     user.Email = newEmail;
-                    break; //Avslutas om användaren hittas 
+                    break;
                 }
             }
         }
@@ -144,3 +144,4 @@ namespace TheCollectorApp
         }
     }
 }
+

@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace TheCollectorApp
 {
     public class Collection
