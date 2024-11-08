@@ -14,18 +14,18 @@
         // Lista över alla samlarobjekt som tillhör kategorin 
         public List<CollectionItem> Items { get; set; }
 
-        // En statisk konstrukor som skapar fördefinierade kategorier
+        // En statisk konstrukor som körs när programmet startas (fördefinierade kategorier)
         static Category()
         {
-            categories.Add(new Category("Litteratur & Böcker", "Olika format av litterära verk: Inbunden, Häftad, Pocket, E-bok, Kartonnage", CategoryType.Böcker));
-            categories.Add(new Category("Film & Video", "Film- och videoformat: DVD, Blu-ray, VHS, LaserDisc, Betamax", CategoryType.Filmer));
-            categories.Add(new Category("Musik & Ljudmedier", "Musikformat och ljudmedier: Vinylskiva, Kassettband, CD, MiniDisc", CategoryType.Musik));
-            categories.Add(new Category("Leksaker & Figurer", "Olika typer av leksaker: LEGO, Figurer, Dockor, Pussel:", CategoryType.Leksaker));
-            categories.Add(new Category("Spel & Interaktiv Media", "Digitala och analoga spel: TV-spel, Datorspel, Brädspel", CategoryType.Spel));
-            categories.Add(new Category("Konst & Konsthantverk", "Olika konstformer: Målning, Skulptur, Keramik, Textiler", CategoryType.Konst));
+            categories.Add(new Category("Litteratur & Böcker", "Olika format av litterära verk: Inbunden, Häftad, Pocket, E-bok, Kartonnage", CategoryType.Books));
+            categories.Add(new Category("Film & Video", "Film- och videoformat: DVD, Blu-ray, VHS, LaserDisc, Betamax", CategoryType.Films));
+            categories.Add(new Category("Musik & Ljudmedier", "Musikformat och ljudmedier: Vinylskiva, Kassettband, CD, MiniDisc", CategoryType.Music));
+            categories.Add(new Category("Leksaker & Figurer", "Olika typer av leksaker: LEGO, Figurer, Dockor, Pussel:", CategoryType.Toys));
+            categories.Add(new Category("Spel & Interaktiv Media", "Digitala och analoga spel: TV-spel, Datorspel, Brädspel", CategoryType.Games));
+            categories.Add(new Category("Konst & Konsthantverk", "Olika konstformer: Målning, Skulptur, Keramik, Textiler", CategoryType.Art));
         }
 
-        // Publik konstrukor för att skapa en ny kategori
+        // Publik konstrukor för att skapa en ny kategori (Fördefinerad och Anpassad)
         public Category(string name, string description, CategoryType type)
         {
             CategoryId = nextId++;
@@ -43,7 +43,7 @@
             return category;
         }
 
-        // Hämtar alla fördefinierade kategorier
+        // Hämtar endast alla fördefinierade kategorier
         public static List<Category> GetAllStandardCategories()
         {
             var standardCategory = new List<Category>();
@@ -77,6 +77,7 @@
         public static List<Category> GetCategoryById(int id)
         {
             var categoryId = new List<Category>();
+
             foreach (Category category in categories)
             {
                 if (category.CategoryId == id)

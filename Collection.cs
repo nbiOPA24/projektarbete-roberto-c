@@ -3,7 +3,6 @@ namespace TheCollectorApp
     public class Collection
     {
         private static int nextId = 1; // Ökar automatiskt med 1 för varje ny samling
-
         //Lista för alla samlingar
         private static List<Collection> collections = new List<Collection>();
 
@@ -16,7 +15,19 @@ namespace TheCollectorApp
         public List<CollectionItem> Items { get; set; }
 
         public DateTime CreateDate { get; }
-        public User Owner { get; }
+        public User Owner { get; set; } // Har lagt till "set" för att kunna uppdatera användare.
+
+        // En statisk konstrukor som körs när programmet startas (fördefinierade samlingar)
+        static Collection()
+        {
+            // Fördefinierade samlingar utan ägare (owner är därför null)
+            collections.Add(new Collection("Boksamling", "En samling med musik", CollectionType.BookCollection, null));
+            collections.Add(new Collection("Filmsamling", "En samling med musik", CollectionType.FilmCollection, null));
+            collections.Add(new Collection("Musiksamling", "En samling med musik", CollectionType.MusicCollection, null));
+            collections.Add(new Collection("Leksakssamling", "En samling med musik", CollectionType.ToyCollection, null));
+            collections.Add(new Collection("Spelsamling", "En samling med musik", CollectionType.GameCollection, null));
+            collections.Add(new Collection("Konstsamling", "En samling med musik", CollectionType.ArtCollection, null));
+        }
 
         public Collection(string collectionName, string description, CollectionType type, User owner)
         {
@@ -35,7 +46,7 @@ namespace TheCollectorApp
             collections.Add(collection);
         }
 
-        // Hämtar samling baserat på namn
+        // Hämtar en samling baserat på namn
         public static List<Collection> GetCollectionByName(string name)
         {
             var collectionName = new List<Collection>();
@@ -50,7 +61,7 @@ namespace TheCollectorApp
             return collectionName;
         }
 
-        // Hämtar samling baserat på ID
+        // Hämtar en samling baserat på ID
         public static List<Collection> GetCollectionById(int id)
         {
             var collectionId = new List<Collection>();
@@ -65,7 +76,7 @@ namespace TheCollectorApp
             return collectionId;
         }
 
-        // Uppdaterar samling baserat på namn
+        // Uppdaterar en samling baserat på namn
         public static void UpdateCollectionByName(string name, string newCollectionName, string newDescription)
         {
             foreach (Collection collection in collections)
@@ -78,7 +89,7 @@ namespace TheCollectorApp
             }
         }
 
-        // Uppdaterar samling baserat på ID
+        // Uppdaterar en samling baserat på ID
         public static void UpdateCollectionById(int id, string newCollectionName, string newDescription)
         {
             foreach (Collection collection in collections)
@@ -91,7 +102,7 @@ namespace TheCollectorApp
             }
         }
 
-        // Tar bort samling baserat på namn
+        // Tar bort en samling baserat på namn
         public static void RemoveCollectionByName(string name)
         {
             foreach (Collection collection in collections)
@@ -104,7 +115,7 @@ namespace TheCollectorApp
             }
         }
 
-        // Tar bort samling baserat på ID
+        // Tar bort en samling baserat på ID
         public static void RemoveCollectionById(int id)
         {
             foreach (Collection collection in collections)

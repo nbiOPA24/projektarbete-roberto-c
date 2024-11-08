@@ -8,16 +8,6 @@ namespace TheCollectorApp
         Toys,
         Games,
         Art,
-        Costum
-
-        /*
-        Böcker,
-        Filmer,
-        Musik,
-        Leksaker,
-        Spel,
-        Konst,
-        Anpassad 
-        */
+        Custom
     }
 }

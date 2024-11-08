@@ -5,7 +5,7 @@ class Program
 {
     static void Main()
     {
-        // Första versionen av en meny...git
+        // Första versionen av en meny...
         while (true)
         {
             Console.WriteLine("==== SAMLARAPPEN ====");
@@ -46,7 +46,7 @@ class Program
             Console.WriteLine("19. Ta bort kategori");
 
             Console.WriteLine();
-            Console.WriteLine("20. Avslutas");
+            Console.WriteLine("20. Avsluta");
 
             string choice = Console.ReadLine();
 
