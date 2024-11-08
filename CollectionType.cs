@@ -2,6 +2,15 @@ namespace TheCollectorApp
 {
     public enum CollectionType
     {
+        BookCollection,
+        FilmCollection,
+        MusicCollection,
+        ToyCollection,
+        GameCollection,
+        ArtCollection,
+        Custom
+
+        /*
         Frimärkssamling,
         Myntsamling,
         Antikvitetssamling,
@@ -11,5 +20,6 @@ namespace TheCollectorApp
         Sportsamling,
         Musiksamling,
         Smyckesamling
+        */
     }
 }

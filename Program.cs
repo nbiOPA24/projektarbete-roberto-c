@@ -10,7 +10,7 @@ class Program
         {
             Console.WriteLine("==== SAMLARAPPEN ====");
             Console.WriteLine("Välkommen! Skapa gärna ett användarkonto eller logga in om du har ett.");
-            Console.WriteLine("Du kan enkelt söka bland dina samlingar genom namn eller ID-nummer.");
+            Console.WriteLine("Du kan enkelt ändra dina samlingar genom ta skriva namn eller ID-nummer.");
             Console.WriteLine();
             Console.WriteLine("==== KONTO & INLOGGNING ====");
             Console.WriteLine("1. Skapa ett användarkonto");
@@ -71,8 +71,6 @@ class Program
         }
     }
 }
-
-
 
 /* 
 //=== Testar klassen CollectionItem ===
@@ -461,7 +459,7 @@ Console.WriteLine();
 }
 }
 
-/*
+
 //=== Testar klassen CollectionItem ===
 
 var item1 = new CollectionItem("En man som heter Ove", "En svensk roman om en surmulen äldre man som sakta dras in i grannarnas liv och blir påverkad av deras värme och vänlighet. ", 199, ItemCondition.MycketBra, "Boken är lite sliten på den första sidan.");
