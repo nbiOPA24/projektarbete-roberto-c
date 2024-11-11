@@ -17,17 +17,19 @@ namespace TheCollectorApp
         public DateTime CreateDate { get; }
         public User Owner { get; set; } // Har lagt till "set" för att kunna uppdatera användare.
 
+        /*
         // En statisk konstrukor som körs när programmet startas (fördefinierade samlingar)
         static Collection()
         {
             // Fördefinierade samlingar utan ägare (owner är därför null)
-            collections.Add(new Collection("Boksamling", "En samling med musik", CollectionType.BookCollection, null));
-            collections.Add(new Collection("Filmsamling", "En samling med musik", CollectionType.FilmCollection, null));
+            collections.Add(new Collection("Boksamling", "En samling med böcker", CollectionType.BookCollection, null));
+            collections.Add(new Collection("Filmsamling", "En samling med filmer", CollectionType.FilmCollection, null));
             collections.Add(new Collection("Musiksamling", "En samling med musik", CollectionType.MusicCollection, null));
-            collections.Add(new Collection("Leksakssamling", "En samling med musik", CollectionType.ToyCollection, null));
-            collections.Add(new Collection("Spelsamling", "En samling med musik", CollectionType.GameCollection, null));
-            collections.Add(new Collection("Konstsamling", "En samling med musik", CollectionType.ArtCollection, null));
+            collections.Add(new Collection("Leksakssamling", "En samling med leksaker", CollectionType.ToyCollection, null));
+            collections.Add(new Collection("Spelsamling", "En samling med spel", CollectionType.GameCollection, null));
+            collections.Add(new Collection("Konstsamling", "En samling med konst", CollectionType.ArtCollection, null));
         }
+        */
 
         public Collection(string collectionName, string description, CollectionType type, User owner)
         {
