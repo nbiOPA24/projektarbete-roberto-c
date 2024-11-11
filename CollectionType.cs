@@ -9,17 +9,5 @@ namespace TheCollectorApp
         GameCollection,
         ArtCollection,
         Custom
-
-        /*
-        Frimärkssamling,
-        Myntsamling,
-        Antikvitetssamling,
-        Leksakssamling,
-        Konstsamling,
-        Filmsamling,
-        Sportsamling,
-        Musiksamling,
-        Smyckesamling
-        */
     }
 }

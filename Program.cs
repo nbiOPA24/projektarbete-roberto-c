@@ -14,7 +14,7 @@ class Program
         // Skapar en användare till samlingarna
         var user = new User("Björn", "Barg", "bjornen", "bjorn123", "bjorn@mail.com");
         ShowUserInfo(user);
-        
+
         // Skapar olika typer av samlingar
         var collection1 = new Collection("Min CD-samling", "En samling med hårdrocksmusik", CollectionType.MusicCollection, user);
         var collection2 = new Collection("Min VHS-samlning", "En samling med filmer från 80-talet", CollectionType.FilmCollection, user);
@@ -49,169 +49,162 @@ class Program
             ShowCollectionInfo(collection);
         }
 
-// Samling som skall ersätta collection1
-Collection.UpdateCollectionByName(collection1.CollectionName, "Min samling av tyska mynt", "En samling med gamla tyska mynt.");
+        // Samling som skall ersätta collection1
+        Collection.UpdateCollectionByName(collection1.CollectionName, "Min samling av tyska mynt", "En samling med gamla tyska mynt.");
 
-Console.WriteLine("=== Uppdaterar samling baserat på id ===");
-foreach (var collection in Collection.GetAllCollections())
-{
-ShowCollectionInfo(collection);
-}
-Console.WriteLine();
-
-// Uppdaterar samling med ID 3
-Collection.UpdateCollectionById(collection3.CollectionId, "Min samling av kassettband", "En samling med klassiskt musik på kassettband.");
-
-Console.WriteLine("=== Uppdaterar samling baserat på namn ===");
-foreach (var collection in Collection.GetAllCollections())
-{
-ShowCollectionInfo(collection);
-}
-
-// Ta bort samling baserat på namn
-Collection.RemoveCollectionByName(collection1.CollectionName);
-
-Console.WriteLine("=== Tar bort samling baserat på namn ===");
-foreach (var collection in Collection.GetAllCollections())
-{
-ShowCollectionInfo(collection);
-}
-
-
-// Ta bort samling baserat på ID
-Collection.RemoveCollectionById(collection2.CollectionId);
-
-Console.WriteLine("=== Tar bort samling baserat på ID ===");
-foreach (var collection in Collection.GetAllCollections())
-{
-ShowCollectionInfo(collection);
-}
-
-
-Console.WriteLine("=== Visar info om samling och tillhörande samlingsobjekt ===");
-foreach (var collection in Collection.GetAllCollections())
-{
-Console.WriteLine($"Samling: {collection2.CollectionName}");
-Console.WriteLine($"Samlarobjekt i samlingen: ");
-foreach (var item in collection2.Items)
-{
-ShowAllItemInfo(item);
-}
-}
-}
-
-    
-
-
-
-
-// === metoder som hjälper till med utskrift ===
-private static void ShowAllItemInfo(CollectionItem item)
-{
-Console.WriteLine($"ID: {item.ItemId}");
-Console.WriteLine($"Name: {item.ItemName}");
-Console.WriteLine($"Beskrivning: {item.Description}");
-Console.WriteLine($"Värde: {item.ItemValue}");
-Console.WriteLine($"Skick: {item.Condition}");
-Console.WriteLine($"Anteckningar: {item.Notes}");
-Console.WriteLine();
-}
-
-private static void ShowUserInfo(User user)
-{
-Console.WriteLine($"Förnamn och efternamn: {user.FirstName} {user.SecondName}");
-Console.WriteLine($"Användarnamn: {user.UserName}");
-Console.WriteLine($"E-post: {user.Email}");
-Console.WriteLine();
-}
-
-private static void ShowCollectionInfo(Collection collection)
-{
-Console.WriteLine($"ID: {collection.CollectionId}");
-Console.WriteLine($"Samlingsnamn: {collection.CollectionName}");
-Console.WriteLine($"Beskrivning: {collection.Description}");
-Console.WriteLine($"Typ: {collection.Type}");
-Console.WriteLine($"Ägare: {collection.Owner}");
-Console.WriteLine($"Skapade: {collection.CreateDate}");
-Console.WriteLine($"Antal objekt: {collection.Items.Count}");
-}
-}
-
-
-
-
-
-
-
-
-
-
-        /*
-        // Första versionen av en meny...
-        while (true)
+        Console.WriteLine("=== Uppdaterar samling baserat på id ===");
+        foreach (var collection in Collection.GetAllCollections())
         {
-            Console.WriteLine("==== SAMLARAPPEN ====");
-            Console.WriteLine("Välkommen! Skapa gärna ett användarkonto eller logga in om du har ett.");
-            Console.WriteLine("Du kan enkelt ändra dina samlingar genom ta skriva namn eller ID-nummer.");
-            Console.WriteLine();
-            Console.WriteLine("==== KONTO & INLOGGNING ====");
-            Console.WriteLine("1. Skapa ett användarkonto");
-            Console.WriteLine("2. Logga in");
-            Console.WriteLine("3. Logga ut");
-            Console.WriteLine();
+            ShowCollectionInfo(collection);
+        }
+        Console.WriteLine();
 
-            Console.WriteLine("=== KONTOHANTERING ===");
-            Console.WriteLine("4. Se kontouppgifter ");
-            Console.WriteLine("5. Uppdatera uppgifter");
-            Console.WriteLine("6. Ta bort konto ");
-            Console.WriteLine();
+        // Uppdaterar samling med ID 3
+        Collection.UpdateCollectionById(collection3.CollectionId, "Min samling av kassettband", "En samling med klassiskt musik på kassettband.");
 
-            Console.WriteLine("=== SAMLINGAR ===");
-            Console.WriteLine("7. Visa mina samlingar");
-            Console.WriteLine("8. Skapa en ny samling");
-            Console.WriteLine("9. Välj en färdig samling");
-            Console.WriteLine("10. Uppdatera samling");
-            Console.WriteLine("11. Ta bort samling");
-            Console.WriteLine();
+        Console.WriteLine("=== Uppdaterar samling baserat på namn ===");
+        foreach (var collection in Collection.GetAllCollections())
+        {
+            ShowCollectionInfo(collection);
+        }
 
-            Console.WriteLine("=== SAMLINGSOBJEKT ===");
-            Console.WriteLine("12. Se mina samlingsobjekt");
-            Console.WriteLine("13. Lägg till nytt samlingsobjekt");
-            Console.WriteLine("14. Uppdatera samlingobjekt");
-            Console.WriteLine("15. Ta bort samlingsobjekt");
-            Console.WriteLine();
+        // Ta bort samling baserat på namn
+        Collection.RemoveCollectionByName(collection1.CollectionName);
 
-            Console.WriteLine("==== KATEGORI ====");
-            Console.WriteLine("16. Visa alla kategorier");
-            Console.WriteLine("17. Lägg till ny kategori");
-            Console.WriteLine("18. Uppdatera kategori");
-            Console.WriteLine("19. Ta bort kategori");
+        Console.WriteLine("=== Tar bort samling baserat på namn ===");
+        foreach (var collection in Collection.GetAllCollections())
+        {
+            ShowCollectionInfo(collection);
+        }
 
-            Console.WriteLine();
-            Console.WriteLine("20. Avsluta");
+        // Ta bort samling baserat på ID
+        Collection.RemoveCollectionById(collection2.CollectionId);
 
-            string choice = Console.ReadLine();
+        Console.WriteLine("=== Tar bort samling baserat på ID ===");
+        foreach (var collection in Collection.GetAllCollections())
+        {
+            ShowCollectionInfo(collection);
+        }
 
-            if (choice == "20")
+        Console.WriteLine("=== Visar info om samling och tillhörande samlingsobjekt ===");
+        foreach (var collection in Collection.GetAllCollections())
+        {
+            Console.WriteLine($"Samling: {collection2.CollectionName}");
+            Console.WriteLine($"Samlarobjekt i samlingen: ");
+            foreach (var item in collection2.Items)
             {
-                Console.WriteLine("Programmet avslutas. Hej då!");
-                break;
+                ShowAllItemInfo(item);
             }
-            switch (choice)
-            {
-                case "1":
-                    Console.WriteLine();
-                    break;
-                case "4":
-                    Console.WriteLine();
-                    break;
-                default:
-                    Console.WriteLine("Ogiltigt val");
-                    break;
-            }
-            Console.WriteLine();
         }
     }
+
+    // === metoder som hjälper till med utskrift ===
+    private static void ShowAllItemInfo(CollectionItem item)
+    {
+        Console.WriteLine($"ID: {item.ItemId}");
+        Console.WriteLine($"Name: {item.ItemName}");
+        Console.WriteLine($"Beskrivning: {item.Description}");
+        Console.WriteLine($"Värde: {item.ItemValue}");
+        Console.WriteLine($"Skick: {item.Condition}");
+        Console.WriteLine($"Anteckningar: {item.Notes}");
+        Console.WriteLine();
+    }
+
+    private static void ShowUserInfo(User user)
+    {
+        Console.WriteLine($"Förnamn och efternamn: {user.FirstName} {user.SecondName}");
+        Console.WriteLine($"Användarnamn: {user.UserName}");
+        Console.WriteLine($"E-post: {user.Email}");
+        Console.WriteLine();
+    }
+
+    private static void ShowCollectionInfo(Collection collection)
+    {
+        Console.WriteLine($"ID: {collection.CollectionId}");
+        Console.WriteLine($"Samlingsnamn: {collection.CollectionName}");
+        Console.WriteLine($"Beskrivning: {collection.Description}");
+        Console.WriteLine($"Typ: {collection.Type}");
+        Console.WriteLine($"Ägare: {collection.Owner}");
+        Console.WriteLine($"Skapade: {collection.CreateDate}");
+        Console.WriteLine($"Antal objekt: {collection.Items.Count}");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/*
+// Första versionen av en meny...
+while (true)
+{
+    Console.WriteLine("==== SAMLARAPPEN ====");
+    Console.WriteLine("Välkommen! Skapa gärna ett användarkonto eller logga in om du har ett.");
+    Console.WriteLine("Du kan enkelt ändra dina samlingar genom ta skriva namn eller ID-nummer.");
+    Console.WriteLine();
+    Console.WriteLine("==== KONTO & INLOGGNING ====");
+    Console.WriteLine("1. Skapa ett användarkonto");
+    Console.WriteLine("2. Logga in");
+    Console.WriteLine("3. Logga ut");
+    Console.WriteLine();
+
+    Console.WriteLine("=== KONTOHANTERING ===");
+    Console.WriteLine("4. Se kontouppgifter ");
+    Console.WriteLine("5. Uppdatera uppgifter");
+    Console.WriteLine("6. Ta bort konto ");
+    Console.WriteLine();
+
+    Console.WriteLine("=== SAMLINGAR ===");
+    Console.WriteLine("7. Visa mina samlingar");
+    Console.WriteLine("8. Skapa en ny samling");
+    Console.WriteLine("9. Välj en färdig samling");
+    Console.WriteLine("10. Uppdatera samling");
+    Console.WriteLine("11. Ta bort samling");
+    Console.WriteLine();
+
+    Console.WriteLine("=== SAMLINGSOBJEKT ===");
+    Console.WriteLine("12. Se mina samlingsobjekt");
+    Console.WriteLine("13. Lägg till nytt samlingsobjekt");
+    Console.WriteLine("14. Uppdatera samlingobjekt");
+    Console.WriteLine("15. Ta bort samlingsobjekt");
+    Console.WriteLine();
+
+    Console.WriteLine("==== KATEGORI ====");
+    Console.WriteLine("16. Visa alla kategorier");
+    Console.WriteLine("17. Lägg till ny kategori");
+    Console.WriteLine("18. Uppdatera kategori");
+    Console.WriteLine("19. Ta bort kategori");
+
+    Console.WriteLine();
+    Console.WriteLine("20. Avsluta");
+
+    string choice = Console.ReadLine();
+
+    if (choice == "20")
+    {
+        Console.WriteLine("Programmet avslutas. Hej då!");
+        break;
+    }
+    switch (choice)
+    {
+        case "1":
+            Console.WriteLine();
+            break;
+        case "4":
+            Console.WriteLine();
+            break;
+        default:
+            Console.WriteLine("Ogiltigt val");
+            break;
+    }
+    Console.WriteLine();
+}
+}
 }
 
 /* 
@@ -229,21 +222,21 @@ CollectionItem.AddItem(item3);
 Console.WriteLine("=== Alla samlarobjekt ===");
 foreach (var item in CollectionItem.GetAllItems())
 {
-    ShowAllItemInfo(item);
+ShowAllItemInfo(item);
 }
 Console.WriteLine();
 
 Console.WriteLine("=== Hämtar samlarobjekt basert på namn (The Matrix) ===");
 foreach (var item in CollectionItem.GetItemByName("The Matrix"))
 {
-    ShowAllItemInfo(item);
+ShowAllItemInfo(item);
 }
 Console.WriteLine();
 
 Console.WriteLine("=== Hämtar samlarobjekt baserat på ID (1) ===");
 foreach (var item in CollectionItem.GetItemById(1))
 {
-    ShowAllItemInfo(item);
+ShowAllItemInfo(item);
 }
 Console.WriteLine();
 
@@ -253,7 +246,7 @@ CollectionItem.UpdateItemByName(item1.ItemName, "Så som i himmelen", "En röran
 Console.WriteLine("=== Alla Samlarobjekt: Uppdaterd baserat på namn ===");
 foreach (var item in CollectionItem.GetAllItems())
 {
-    ShowAllItemInfo(item);
+ShowAllItemInfo(item);
 }
 
 // Samlarobjekt som skall ersätta item2
@@ -263,7 +256,7 @@ CollectionItem.UpdateItemById(item2.ItemId, "Blade Runner", "En uppföljare till
 Console.WriteLine("=== Alla Samlarobjekt: Uppdaterd baserat på namn ===");
 foreach (var item in CollectionItem.GetAllItems())
 {
-    ShowAllItemInfo(item);
+ShowAllItemInfo(item);
 }
 
 //Ta bort samlarobjekt baserat på namn
@@ -271,7 +264,7 @@ CollectionItem.RemoveItemByName(item2.ItemName);
 Console.WriteLine("=== Alla samlarobjekt: Utan item2 ===");
 foreach (var item in CollectionItem.GetAllItems())
 {
-    ShowAllItemInfo(item);
+ShowAllItemInfo(item);
 }
 
 // Ta bort samlarobjekt baserat på ID
@@ -279,7 +272,7 @@ CollectionItem.RemoveItemById(item3.ItemId);
 Console.WriteLine("=== Alla samlarobjekt: Utan item3 ===");
 foreach (var item in CollectionItem.GetAllItems())
 {
-    ShowAllItemInfo(item);
+ShowAllItemInfo(item);
 }
 
 decimal newValue = 500;
@@ -287,7 +280,7 @@ Console.WriteLine($"Uppdaterat värdet till {newValue} på samlarobjekt item1");
 CollectionItem.EstimatedOwnValue(item1.ItemId, newValue);
 foreach (var item in CollectionItem.GetAllItems())
 {
-    ShowAllItemInfo(item);
+ShowAllItemInfo(item);
 }
 }
 
