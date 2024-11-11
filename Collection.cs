@@ -1,3 +1,5 @@
+using System.Reflection.Metadata;
+
 namespace TheCollectorApp
 {
     public class Collection
@@ -9,29 +11,29 @@ namespace TheCollectorApp
         public int CollectionId { get; }
         public string CollectionName { get; set; }
         public string Description { get; set; }
-        // Olika typer av färdiga samlingar att välja mellan
+        // Olika typer av samlingar att välja mellan, kan vara fördefinierade eller anpassade
         public CollectionType Type { get; }
 
         public List<CollectionItem> Items { get; set; }
 
         public DateTime CreateDate { get; }
-        public User Owner { get; set; } // Har lagt till "set" för att kunna uppdatera användare.
+        public User? Owner { get; set; } // Hämtar eller sätter en användare av en samling
 
-        /*
-        // En statisk konstrukor som körs när programmet startas (fördefinierade samlingar)
+        public bool IsStandard { get; } // Är sann om samlingen är fördefinierad
+
+        // En statisk konstrukor som körs fördefinierade samlingar när programmet startas
         static Collection()
         {
-            // Fördefinierade samlingar utan ägare (owner är därför null)
-            collections.Add(new Collection("Boksamling", "En samling med böcker", CollectionType.BookCollection, null));
-            collections.Add(new Collection("Filmsamling", "En samling med filmer", CollectionType.FilmCollection, null));
-            collections.Add(new Collection("Musiksamling", "En samling med musik", CollectionType.MusicCollection, null));
-            collections.Add(new Collection("Leksakssamling", "En samling med leksaker", CollectionType.ToyCollection, null));
-            collections.Add(new Collection("Spelsamling", "En samling med spel", CollectionType.GameCollection, null));
-            collections.Add(new Collection("Konstsamling", "En samling med konst", CollectionType.ArtCollection, null));
+            // Fördefinierade samlingar utan användare (owner är därför null)
+            collections.Add(new Collection("Boksamling", "En samling med böcker", CollectionType.BookCollection, null, true));
+            collections.Add(new Collection("Filmsamling", "En samling med filmer", CollectionType.FilmCollection, null, true));
+            collections.Add(new Collection("Musiksamling", "En samling med musik", CollectionType.MusicCollection, null, true));
+            collections.Add(new Collection("Leksakssamling", "En samling med leksaker", CollectionType.ToyCollection, null, true));
+            collections.Add(new Collection("Spelsamling", "En samling med spel", CollectionType.GameCollection, null, true));
+            collections.Add(new Collection("Konstsamling", "En samling med konst", CollectionType.ArtCollection, null, true));
         }
-        */
 
-        public Collection(string collectionName, string description, CollectionType type, User owner)
+        public Collection(string collectionName, string description, CollectionType type, User? owner, bool isStandard = false) // isStandard är false 
         {
             CollectionId = nextId++; // Tilldelar nuvarande värdet. Sedan ökar den med ett steg
             CollectionName = collectionName;
@@ -40,12 +42,25 @@ namespace TheCollectorApp
             Owner = owner;
             CreateDate = DateTime.Now;
             Items = new List<CollectionItem>();
+            IsStandard = isStandard;
         }
 
-        // Lägger till en samling
+        // Lägger till en samling 
         public static void AddCollection(Collection collection)
         {
             collections.Add(collection);
+        }
+
+        // Sätter användare till en fördefinierad samling
+        public static void SetOwnerToStandardCollection(User user)
+        {
+            foreach (var collection in collections)
+            {
+                if (collection.IsStandard && collection.Owner == null)
+                {
+                    collection.Owner = user;
+                }
+            }
         }
 
         // Hämtar en samling baserat på namn
@@ -77,6 +92,43 @@ namespace TheCollectorApp
             }
             return collectionId;
         }
+
+        // Hämtar alla fördefinierade samlingar
+        public static List<Collection> GetAllStandardCollections()
+        {
+            var standardCollection = new List<Collection>();
+
+            foreach (var collection in collections)
+            {
+                if (collection.IsStandard)
+                {
+                    standardCollection.Add(collection);
+                }
+            }
+            return standardCollection;
+        }
+
+        // Hämtar alla anpassade samlingar
+        public static List<Collection> GetAllCustomCollections()
+        {
+            var customCollection = new List<Collection>();
+
+            foreach (var collection in collections)
+            {
+                if (!collection.IsStandard)
+                {
+                    customCollection.Add(collection);
+                }
+            }
+            return customCollection;
+        }
+
+        // Hämtar alla anpassade och fördefinierade samlingar
+        public static List<Collection> GetAllCollections()
+        {
+            return collections;
+        }
+
 
         // Uppdaterar en samling baserat på namn
         public static void UpdateCollectionByName(string name, string newCollectionName, string newDescription)
@@ -130,11 +182,7 @@ namespace TheCollectorApp
             }
         }
 
-        // Hämtar alla samlingar
-        public static List<Collection> GetAllCollections()
-        {
-            return collections;
-        }
+
 
         // === Samlarobjekt ===
 

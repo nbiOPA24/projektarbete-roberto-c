@@ -1,8 +1,6 @@
 ﻿using System;
 using TheCollectorApp;
 
-// TEST DATOR 2
-
 class Program
 {
     static void Main()
@@ -11,58 +9,80 @@ class Program
 
         Console.WriteLine("=== Skapar en ny användare med samlingar ===");
 
-        // Skapar en användare till samlingarna
+        // Skapar 3 st. användare till samlingarna
         var user = new User("Björn", "Barg", "bjornen", "bjorn123", "bjorn@mail.com");
+        var user2 = new User("Ulf", "Stålman", "stalmannen", "stalmannen123", "stalman@mail.com");
+        var user3 = new User("Tore", "Falk", "falken", "falk123", "falk@mail.com");
         ShowUserInfo(user);
+        ShowUserInfo(user2);
+        ShowUserInfo(user3);
 
-        // Skapar olika typer av samlingar
-        var collection1 = new Collection("Min CD-samling", "En samling med hårdrocksmusik", CollectionType.MusicCollection, user);
-        var collection2 = new Collection("Min VHS-samlning", "En samling med filmer från 80-talet", CollectionType.FilmCollection, user);
-        var collection3 = new Collection("Min samlning av finska mynt", "En samling med gamla mynt från Finland", CollectionType.Custom, user);
+        // Skapar 3 typer av anpassade samlingar
+        var collection1 = new Collection("Min samling av böcker", "En samling med svenska böcker", CollectionType.MusicCollection, user, false);
+        var collection2 = new Collection("Min VHS-samlning", "En samling med filmer från 80-talet", CollectionType.FilmCollection, user2, false);
+        var collection3 = new Collection("Min samling av figurer", "En samling med äldre figurer från Disney", CollectionType.Custom, user3, false);
 
+        // Lägger till samlingar till listan
         Collection.AddCollection(collection1);
         Collection.AddCollection(collection2);
         Collection.AddCollection(collection3);
 
-        // Skapar samlingsobjekt
+        // Skapar "samlingsobjekt" 
         var item1 = new CollectionItem("En man som heter Ove", "En svensk roman om en surmulen äldre man som sakta dras in i grannarnas liv och blir påverkad av deras värme och vänlighet. ", 199, ItemCondition.Decent, "Boken är lite sliten på den första sidan.");
         var item2 = new CollectionItem("The Matrix", "Filmen är en sci-fi-film där en hacker upptäcker att verkligheten är en simulering styrd av maskiner, och han måste kämpa för mänsklighetens frihet.", 99, ItemCondition.Poor, "Film är trasig och går inte att använda. Men är ett bra minne och kan ställas i bokhyllan.");
-        var item3 = new CollectionItem("Musse Pigg-figur: Limited Edition-figurer:", "Speciella samlarobjekt som producerats i begränsad upplaga, ofta av företag som Disney Store eller Hallmark.", 19999, ItemCondition.Excellent, "Figuren har varit bevarad i en glasmonter på ett museum.");
+        var item3 = new CollectionItem("Musse Pigg-figur: Limited Edition-figurer", "Speciella samlarobjekt som producerats i begränsad upplaga, ofta av företag som Disney Store eller Hallmark.", 19999, ItemCondition.Excellent, "Figuren har varit bevarad i en glasmonter på ett museum.");
+
+        // lägger till samlingsobjekt till respektive samling
+        collection1.AddItemToCollection(item1);
         collection2.AddItemToCollection(item2);
+        collection3.AddItemToCollection(item3);
 
 
-        Console.WriteLine("=== Skapade samlingar med ID: 1, 2, 3 ===");
-        foreach (var collection in Collection.GetAllCollections())
+        Console.WriteLine("=== Bara alla anpassade samlingar (ID: 7, 8, 9) ===");
+        foreach (var collection in Collection.GetAllCustomCollections())
         {
             ShowCollectionInfo(collection);
         }
 
-        Console.WriteLine("=== Hämta samling baserat på namn ===");
-        foreach (var collection in Collection.GetCollectionByName("Min CD-samling"))
+        Console.WriteLine("=== Bara alla fördefinierade samlingar (ID: 1-6) ===");
+        foreach (var collection in Collection.GetAllStandardCollections())
         {
             ShowCollectionInfo(collection);
         }
 
-        Console.WriteLine("=== Hämta samling baserat på ID ===");
-        foreach (var collection in Collection.GetCollectionById(3))
-        {
-            ShowCollectionInfo(collection);
-        }
-
-        // Samling som skall ersätta collection1
-        Collection.UpdateCollectionByName(collection1.CollectionName, "Min samling av tyska mynt", "En samling med gamla tyska mynt.");
-
-        Console.WriteLine("=== Uppdaterar samling baserat på id ===");
+        Console.WriteLine("=== Alla fördefinierade & Anpassade samlingar ===");
         foreach (var collection in Collection.GetAllCollections())
         {
             ShowCollectionInfo(collection);
         }
         Console.WriteLine();
 
-        // Uppdaterar samling med ID 3
-        Collection.UpdateCollectionById(collection3.CollectionId, "Min samling av kassettband", "En samling med klassiskt musik på kassettband.");
+        Console.WriteLine("=== Hämtar samling baserat på namn ===");
+        foreach (var collection in Collection.GetCollectionByName("Min samling av böcker"))
+        {
+            ShowCollectionInfo(collection);
+        }
 
-        Console.WriteLine("=== Uppdaterar samling baserat på namn ===");
+        Console.WriteLine("=== Hämtar samling baserat på ID ===");
+        foreach (var collection in Collection.GetCollectionById(3))
+        {
+            ShowCollectionInfo(collection);
+        }
+
+        // Samling som skall ersätta collection1 baserat på namn
+        Collection.UpdateCollectionByName(collection1.CollectionName, "Min samling av tyska mynt", "En samling med gamla tyska mynt.");
+
+        Console.WriteLine("=== Uppdaterar samling baserat på namn (Min samling av böcker) ===");
+        foreach (var collection in Collection.GetAllCollections())
+        {
+            ShowCollectionInfo(collection);
+        }
+        Console.WriteLine();
+
+        // Uppdaterar samling med ID 9
+        Collection.UpdateCollectionById(collection3.CollectionId, "Superhjältefigur: Limited Edition-Actionfigur", "En exklusiv och detaljerad actionfigur av en superhjälte från ett populärt serieuniversum, ofta släppt i begränsad upplaga.");
+
+        Console.WriteLine("=== Uppdaterar samling baserat på ID (9) ===");
         foreach (var collection in Collection.GetAllCollections())
         {
             ShowCollectionInfo(collection);
@@ -70,7 +90,6 @@ class Program
 
         // Ta bort samling baserat på namn
         Collection.RemoveCollectionByName(collection1.CollectionName);
-
         Console.WriteLine("=== Tar bort samling baserat på namn ===");
         foreach (var collection in Collection.GetAllCollections())
         {
@@ -79,7 +98,6 @@ class Program
 
         // Ta bort samling baserat på ID
         Collection.RemoveCollectionById(collection2.CollectionId);
-
         Console.WriteLine("=== Tar bort samling baserat på ID ===");
         foreach (var collection in Collection.GetAllCollections())
         {
@@ -104,7 +122,7 @@ class Program
         Console.WriteLine($"ID: {item.ItemId}");
         Console.WriteLine($"Name: {item.ItemName}");
         Console.WriteLine($"Beskrivning: {item.Description}");
-        Console.WriteLine($"Värde: {item.ItemValue}");
+        Console.WriteLine($"Värde: {item.ItemValue:C}"); // C: formas till valuta
         Console.WriteLine($"Skick: {item.Condition}");
         Console.WriteLine($"Anteckningar: {item.Notes}");
         Console.WriteLine();
@@ -112,6 +130,7 @@ class Program
 
     private static void ShowUserInfo(User user)
     {
+        Console.WriteLine($"ID: {user.UserId}");
         Console.WriteLine($"Förnamn och efternamn: {user.FirstName} {user.SecondName}");
         Console.WriteLine($"Användarnamn: {user.UserName}");
         Console.WriteLine($"E-post: {user.Email}");
@@ -124,20 +143,12 @@ class Program
         Console.WriteLine($"Samlingsnamn: {collection.CollectionName}");
         Console.WriteLine($"Beskrivning: {collection.Description}");
         Console.WriteLine($"Typ: {collection.Type}");
-        Console.WriteLine($"Ägare: {collection.Owner}");
+        Console.WriteLine($"Ägare: {collection.Owner?.FirstName ?? "Ingen ägare"}");
         Console.WriteLine($"Skapade: {collection.CreateDate}");
         Console.WriteLine($"Antal objekt: {collection.Items.Count}");
+        Console.WriteLine($"Variant: {(collection.IsStandard ? "Fördefinierad" : "Anpassad")}");
     }
 }
-
-
-
-
-
-
-
-
-
 
 /*
 // Första versionen av en meny...
