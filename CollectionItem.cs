@@ -2,8 +2,8 @@ namespace TheCollectorApp
 {
 	public class CollectionItem
 	{
-		private static int nextId = 1; // Ökar automatiskt med 1 för varje ny samlingsobjekt
-		private static List<CollectionItem> items = new List<CollectionItem>();
+		private static int nextId = 1; // Ökar automatiskt med 1 för varje nytt samlingsobjekt
+		private static List<CollectionItem> items = new List<CollectionItem>(); // Lista som lagrar alla samlingsobjekt
 
 		public int ItemId { get; }
 		public string ItemName { get; set; }
@@ -12,7 +12,7 @@ namespace TheCollectorApp
 		public DateTime AddedDate { get; }
 		public ItemCondition Condition { get; set; }
 		public string Notes { get; set; }
-		//List över kategorier som samlarobjektet tillhör
+		// List över kategorier som samlingsobjektet tillhör
 		public List<Category> Categories { get; set; }
 
 		public CollectionItem(string name, string description, decimal itemValue, ItemCondition condition, string notes)
@@ -24,7 +24,7 @@ namespace TheCollectorApp
 			AddedDate = DateTime.Now;
 			Condition = condition;
 			Notes = notes;
-			Categories = new List<Category>();
+			Categories = new List<Category>(); // En tom lista för kategorier som samlarobjektet tillhör
 		}
 
 		public static void AddItem(CollectionItem item)
@@ -32,7 +32,7 @@ namespace TheCollectorApp
 			items.Add(item);
 		}
 
-		// Retunerar ett samlarobjekt baserat på namn
+		// Returnerar ett samlarobjekt baserat på namn
 		public static List<CollectionItem> GetItemByName(string name)
 		{
 			var itemName = new List<CollectionItem>();
@@ -47,7 +47,7 @@ namespace TheCollectorApp
 			return itemName;
 		}
 
-		// Retunerar ett samlarobjekt baserat på ID
+		// Returnerar ett samlarobjekt baserat på ID
 		public static List<CollectionItem> GetItemById(int id)
 		{
 			var itemId = new List<CollectionItem>();
@@ -62,7 +62,7 @@ namespace TheCollectorApp
 			return itemId;
 		}
 
-		// Uppdaterar ett samlarobjekt baserat på namn 
+		// Uppdaterar egenskaper för ett samlarobjekt baserat på namn 
 		public static void UpdateItemByName(string name, string newName, string newDescription, decimal newValue, ItemCondition newCondition, string newNotes)
 		{
 			foreach (CollectionItem item in items)
@@ -78,7 +78,7 @@ namespace TheCollectorApp
 			}
 		}
 
-		// Uppdaterar ett samlarobjekt baserat på ID 
+		// Uppdaterar egenskaper för ett samlarobjekt baserat på ID 
 		public static void UpdateItemById(int id, string newName, string newDescription, decimal newValue, ItemCondition newCondition, string newNotes)
 		{
 			foreach (CollectionItem item in items)
@@ -107,7 +107,7 @@ namespace TheCollectorApp
 			}
 		}
 
-		// Ta bort samlarobjekt baserat på ID
+		// Tar bort samlarobjekt baserat på ID
 		public static void RemoveItemById(int id)
 		{
 			foreach (CollectionItem item in items)
@@ -120,13 +120,13 @@ namespace TheCollectorApp
 			}
 		}
 
-		// Retunerar alla samlarobjekt från en lista
+		// Returnerar alla samlingsobjekt från en lista
 		public static List<CollectionItem> GetAllItems()
 		{
 			return items;
 		}
 
-		// Uppdaterar värdet på ett samlarobjekt baserat på ID
+		// Uppdaterar det uppskattade värdet på ett samlingsobjekt baserat på ID
 		public static void EstimatedOwnValue(int id, decimal newValue)
 		{
 			foreach (CollectionItem item in items)

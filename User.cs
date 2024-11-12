@@ -10,10 +10,10 @@ namespace TheCollectorApp
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public string UserName { get; set; }
-        private string Password { get; set; } // Private för säkerhet
+        private string Password { get; set; } // Private för skydda lösenordet
         public string Email { get; set; }
         public DateTime RegistrationDate { get; } // Ska inte ändras
-        public bool IsInlogged { get; set; }
+        public bool IsLoggedIn { get; set; }
 
         // lista med användarens samlingar
         public List<Collection> Collections { get; set; }
@@ -27,17 +27,17 @@ namespace TheCollectorApp
             Password = password;
             Email = email;
             RegistrationDate = DateTime.Now;
-            IsInlogged = false;
+            IsLoggedIn = false;
             Collections = new List<Collection>();
         }
 
-        // CRUD metoder
-
+        // Lägger till en ny användare i listan users
         public static void AddUser(User user)
         {
             users.Add(user);
         }
 
+        // Returnerar en användare baserat på namn
         public static List<User> GetUserByName(string name)
         {
             var userName = new List<User>();
@@ -51,6 +51,7 @@ namespace TheCollectorApp
             return userName;
         }
 
+        // Returnerar en användare baserat på ID
         public static List<User> GetUserById(int id)
         {
             var userId = new List<User>();
@@ -64,6 +65,7 @@ namespace TheCollectorApp
             return userId;
         }
 
+        // Uppdaterar egenskaper för en användare baserat på namn 
         public static void UpdateUserByName(string name, string newFirstName, string newSecondName, string newUserName, string newPassword, string newEmail)
         {
             foreach (User user in users)
@@ -75,11 +77,12 @@ namespace TheCollectorApp
                     user.UserName = newUserName;
                     user.Password = newPassword;
                     user.Email = newEmail;
-                    break; //Avslutas om användaren hittas 
+                    break; // Avslutar sökningen om användaren hittas
                 }
             }
         }
 
+        // Uppdaterar egenskaper för en användare baserat på ID
         public static void UpdateUserById(int id, string newFirstName, string newSecondName, string newUserName, string newPassword, string newEmail)
         {
             foreach (User user in users)
@@ -96,6 +99,7 @@ namespace TheCollectorApp
             }
         }
 
+        // Tar bort en användare baserat på namn
         public static void RemoveUserByName(string name)
         {
             foreach (User user in users)
@@ -108,6 +112,7 @@ namespace TheCollectorApp
             }
         }
 
+        // Tar bort en användare baserat på ID
         public static void RemoveUserById(int id)
         {
             foreach (User user in users)
@@ -120,28 +125,27 @@ namespace TheCollectorApp
             }
         }
 
-        // Hämtar alla registrerade användare
+        // Returnerar alla registrerade användare
         public static List<User> GetAllUsers()
         {
             return users;
         }
 
-        // Loggar in användare med användarnamn och lösenord  
+        // Loggar in användare med användarnamn och lösenord. Returnerar True om inloggning lyckas, annars False
         public bool LoginUser(string userName, string password)
         {
             if (UserName == userName && Password == password)
             {
-                IsInlogged = true;
+                IsLoggedIn = true;
                 return true;
             }
             return false;
         }
 
-        // Loggar ut användare
+        // Loggar ut användaren
         public void LogoutUser()
         {
-            IsInlogged = false;
+            IsLoggedIn = false;
         }
     }
 }
-

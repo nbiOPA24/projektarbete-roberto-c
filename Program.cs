@@ -574,13 +574,13 @@ Console.WriteLine("=== Testar inloggning för Isabell ===");
 //Jämför användarnamn och lösenord 
 bool loginSuccess = user1.LoginUser("Bella", "bella123");
 // Visar att användaren (Anders) har lyckats logga in
-Console.WriteLine($"Lyckad inloggning! Välkommen, isInlogged är {loginSuccess}.");
+Console.WriteLine($"Lyckad inloggning! Välkommen, IsLoggedIn är {loginSuccess}.");
 Console.WriteLine($"Användaren är inloggad: {user1.IsInlogged}");
 Console.WriteLine();
 
 Console.WriteLine("=== Testar utloggning ===");
 user1.LogoutUser();
-Console.WriteLine($"Lyckad utloggning! Hej då, isInlogged är {user1.IsInlogged}");
+Console.WriteLine($"Lyckad utloggning! Hej då, isInlogged är {user1.IsLoggedIn}");
 Console.WriteLine("Användare är utloggad");
 Console.WriteLine();
 

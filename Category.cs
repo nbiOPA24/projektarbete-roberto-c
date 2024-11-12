@@ -10,32 +10,31 @@
         public string CategoryName { get; set; }
         public string Description { get; set; }
         public CategoryType Type { get; }
-
-        // Lista över alla samlarobjekt som tillhör kategorin 
+        // Lista med alla samlingsobjekt som tillhör kategorin
         public List<CollectionItem> Items { get; set; }
 
-        // En statisk konstrukor som körs när programmet startas (fördefinierade kategorier)
+        // En statisk konstruktor som körs när programmet startas (fördefinierade kategorier)
         static Category()
         {
             categories.Add(new Category("Litteratur & Böcker", "Olika format av litterära verk: Inbunden, Häftad, Pocket, E-bok, Kartonnage", CategoryType.Books));
             categories.Add(new Category("Film & Video", "Film- och videoformat: DVD, Blu-ray, VHS, LaserDisc, Betamax", CategoryType.Films));
             categories.Add(new Category("Musik & Ljudmedier", "Musikformat och ljudmedier: Vinylskiva, Kassettband, CD, MiniDisc", CategoryType.Music));
-            categories.Add(new Category("Leksaker & Figurer", "Olika typer av leksaker: LEGO, Figurer, Dockor, Pussel:", CategoryType.Toys));
+            categories.Add(new Category("Leksaker & Figurer", "Olika typer av leksaker: LEGO, Figurer, Dockor, Pussel", CategoryType.Toys));
             categories.Add(new Category("Spel & Interaktiv Media", "Digitala och analoga spel: TV-spel, Datorspel, Brädspel", CategoryType.Games));
             categories.Add(new Category("Konst & Konsthantverk", "Olika konstformer: Målning, Skulptur, Keramik, Textiler", CategoryType.Art));
         }
 
-        // Publik konstrukor för att skapa en ny kategori (Fördefinerad och Anpassad)
+        // Publik konstruktor för att skapa en ny kategori (Fördefinerad och Anpassad)
         public Category(string name, string description, CategoryType type)
         {
             CategoryId = nextId++;
             CategoryName = name;
             Description = description;
             Type = type;
-            Items = new List<CollectionItem>();
+            Items = new List<CollectionItem>(); // En tom lista för samlarobjekt som tillhör kategorin
         }
 
-        // Lägger till en anpassad kategori till listan av kategorier
+        // Skapar en anpassade kategori och lägger till den i listan categories
         public static Category AddCustomCategory(string name, string description)
         {
             var category = new Category(name, description, CategoryType.Custom);
@@ -43,7 +42,7 @@
             return category;
         }
 
-        // Hämtar endast alla fördefinierade kategorier
+        // Returnerar endast alla fördefinierade kategorier
         public static List<Category> GetAllStandardCategories()
         {
             var standardCategory = new List<Category>();
@@ -58,7 +57,7 @@
             return standardCategory;
         }
 
-        // Hämtar en kategori baserat på namn
+        // Returnerar en kategori baserat på namn
         public static List<Category> GetCategoryByName(string name)
         {
             var categoryName = new List<Category>();
@@ -73,7 +72,7 @@
             return categoryName;
         }
 
-        // Hämtar en kategori baserat på ID
+        // Returnerar en kategori baserat på ID
         public static List<Category> GetCategoryById(int id)
         {
             var categoryId = new List<Category>();
@@ -88,7 +87,7 @@
             return categoryId;
         }
 
-        // Uppdaterar en kategori baserat på namn
+        // Uppdaterar namn och beskrivning för en kategori baserat på namn
         public static void UpdateCategoryByName(string name, string newName, string newDescription)
         {
             foreach (Category category in categories)
@@ -102,7 +101,7 @@
             }
         }
 
-        // Uppdaterar en kategori baserat på ID
+        // Uppdaterar namn och beskrivning för en kategori baserat på ID
         public static void UpdateCategoryById(int id, string newName, string newDescription)
         {
             foreach (Category category in categories)
@@ -141,7 +140,7 @@
             }
         }
 
-        // Hämtar alla kategorier (både fördefinierade och anpassade)
+        // Retunerar alla kategorier (både fördefinierade och anpassade)
         public static List<Category> GetAllCategories()
         {
             return categories;

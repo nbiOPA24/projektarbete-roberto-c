@@ -15,8 +15,8 @@ namespace TheCollectorApp
         public CollectionType Type { get; }
         public List<CollectionItem> Items { get; set; }
         public DateTime CreateDate { get; }
-        public User? Owner { get; set; } // Hämtar eller sätter en användare av en fördefinierad samling
-        public bool IsStandard { get; } // Är True om samlingen är fördefinierad, annars false
+        public User? Owner { get; set; } // Hämtar eller sätter en användare för samlingen. Kan vara null
+        public bool IsStandard { get; } // True om samlingen är fördefinierad, annars False
 
         // En statisk konstruktor med fördefinierade samlingar som körs en gång när programmet startar
         static Collection()
@@ -30,9 +30,9 @@ namespace TheCollectorApp
             collections.Add(new Collection("Konstsamling", "En samling med konst", CollectionType.ArtCollection, null, true));
         }
 
-        public Collection(string collectionName, string description, CollectionType type, User? owner, bool isStandard = false) // isStandard är false 
+        public Collection(string collectionName, string description, CollectionType type, User? owner, bool isStandard = false) // isStandard är false när användaren skapar en ny anpassad samling
         {
-            CollectionId = nextId++; // Tilldelar nuvarande värdet. Sedan ökar den med ett steg
+            CollectionId = nextId++; // Tilldelar nuvarande värde. Sedan ökar den med ett steg
             CollectionName = collectionName;
             Description = description;
             Type = type;
@@ -42,7 +42,7 @@ namespace TheCollectorApp
             IsStandard = isStandard;
         }
 
-        // Lägger till en ny samling i collection-listan 
+        // Lägger till en ny samling i listan collections
         public static void AddCollection(Collection collection)
         {
             collections.Add(collection);
@@ -60,7 +60,7 @@ namespace TheCollectorApp
             }
         }
 
-        // Hämtar alla samlingar baserat på namn
+        // Returnerar alla samlingar baserat på namn
         public static List<Collection> GetCollectionByName(string name)
         {
             var collectionName = new List<Collection>();
@@ -75,7 +75,7 @@ namespace TheCollectorApp
             return collectionName;
         }
 
-        // Hämtar alla samlingar baserat på ID
+        // Returnerar alla samlingar baserat på ID
         public static List<Collection> GetCollectionById(int id)
         {
             var collectionId = new List<Collection>();
@@ -90,7 +90,7 @@ namespace TheCollectorApp
             return collectionId;
         }
 
-        // Hämtar endast fördefinierade samlingar
+        // Returnerar endast fördefinierade samlingar
         public static List<Collection> GetAllStandardCollections()
         {
             var standardCollection = new List<Collection>();
@@ -105,7 +105,7 @@ namespace TheCollectorApp
             return standardCollection;
         }
 
-        // Hämtar endast anpassade samlingar
+        // Returnerar endast anpassade samlingar
         public static List<Collection> GetAllCustomCollections()
         {
             var customCollection = new List<Collection>();
@@ -120,13 +120,13 @@ namespace TheCollectorApp
             return customCollection;
         }
 
-        // Hämtar alla samlingar (anpassade och fördefinierade)
+        // Returnerar alla samlingar (anpassade och fördefinierade)
         public static List<Collection> GetAllCollections()
         {
             return collections;
         }
 
-        // Uppdaterar en samlings namn och beskrivning baserat på angivet namn
+        // Uppdaterar namn och beskrivning för en samling baserat på namn
         public static void UpdateCollectionByName(string name, string newCollectionName, string newDescription)
         {
             foreach (Collection collection in collections)
@@ -139,7 +139,7 @@ namespace TheCollectorApp
             }
         }
 
-        // Uppdaterar en samlings namn och beskrivnig baserat på angivet ID
+        // Uppdaterar namn och beskrivning för en samling baserat på ID
         public static void UpdateCollectionById(int id, string newCollectionName, string newDescription)
         {
             foreach (Collection collection in collections)
@@ -178,9 +178,9 @@ namespace TheCollectorApp
             }
         }
 
-        // === Samlarobjekt ===
+        // === Samlingsobjekt ===
 
-        // Lägger till ett nytt samlarobjekt till den aktuella samlingen
+        // Lägger till ett nytt samlingsobjekt till den aktuella samlingen
         public void AddItemToCollection(CollectionItem item)
         {
             Items.Add(item);
