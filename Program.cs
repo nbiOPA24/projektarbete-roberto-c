@@ -5,11 +5,11 @@ class Program
 {
     static void Main()
     {
-        // === Testar klassen Collection === 
+        // === Testar klassen Collection (Initierar) === 
 
         Console.WriteLine("=== Skapar en ny användare med samlingar ===");
 
-        // Skapar 3 st. användare till samlingarna
+        // Skapar tre användare till samlingarna
         var user = new User("Björn", "Barg", "bjornen", "bjorn123", "bjorn@mail.com");
         var user2 = new User("Ulf", "Stålman", "stalmannen", "stalmannen123", "stalman@mail.com");
         var user3 = new User("Tore", "Falk", "falken", "falk123", "falk@mail.com");
@@ -17,26 +17,33 @@ class Program
         ShowUserInfo(user2);
         ShowUserInfo(user3);
 
-        // Skapar 3 typer av anpassade samlingar
+        // Skapar tre olika typer av anpassade samlingar och tilldelar användare
         var collection1 = new Collection("Min samling av böcker", "En samling med svenska böcker", CollectionType.MusicCollection, user, false);
         var collection2 = new Collection("Min VHS-samlning", "En samling med filmer från 80-talet", CollectionType.FilmCollection, user2, false);
         var collection3 = new Collection("Min samling av figurer", "En samling med äldre figurer från Disney", CollectionType.Custom, user3, false);
 
-        // Lägger till samlingar till listan
+        // Lägger till samlingarna
         Collection.AddCollection(collection1);
         Collection.AddCollection(collection2);
         Collection.AddCollection(collection3);
 
-        // Skapar "samlingsobjekt" 
+        // Skapar "samlingsobjekt" till samlingarna 
         var item1 = new CollectionItem("En man som heter Ove", "En svensk roman om en surmulen äldre man som sakta dras in i grannarnas liv och blir påverkad av deras värme och vänlighet. ", 199, ItemCondition.Decent, "Boken är lite sliten på den första sidan.");
         var item2 = new CollectionItem("The Matrix", "Filmen är en sci-fi-film där en hacker upptäcker att verkligheten är en simulering styrd av maskiner, och han måste kämpa för mänsklighetens frihet.", 99, ItemCondition.Poor, "Film är trasig och går inte att använda. Men är ett bra minne och kan ställas i bokhyllan.");
         var item3 = new CollectionItem("Musse Pigg-figur: Limited Edition-figurer", "Speciella samlarobjekt som producerats i begränsad upplaga, ofta av företag som Disney Store eller Hallmark.", 19999, ItemCondition.Excellent, "Figuren har varit bevarad i en glasmonter på ett museum.");
 
         // lägger till samlingsobjekt till respektive samling
-        collection1.AddItemToCollection(item1);
-        collection2.AddItemToCollection(item2);
-        collection3.AddItemToCollection(item3);
+        collection1.AddItemToCollection(item1); // ID: 7
+        collection2.AddItemToCollection(item2); // ID: 8
+        collection3.AddItemToCollection(item3); // ID: 9
 
+        // Sätter en användare till alla fördefinierade samlingar
+        Collection.SetOwnerToStandardCollection(user3);
+        Console.WriteLine("=== Fördefinierad samling med användare ===");
+        foreach (var collection in Collection.GetAllStandardCollections())
+        {
+            ShowCollectionInfo(collection);
+        }
 
         Console.WriteLine("=== Bara alla anpassade samlingar (ID: 7, 8, 9) ===");
         foreach (var collection in Collection.GetAllCustomCollections())
@@ -116,7 +123,7 @@ class Program
         }
     }
 
-    // === metoder som hjälper till med utskrift ===
+    // === Metod som hjälper till med utskrift för Samlingsobjekt ===
     private static void ShowAllItemInfo(CollectionItem item)
     {
         Console.WriteLine($"ID: {item.ItemId}");
@@ -128,6 +135,7 @@ class Program
         Console.WriteLine();
     }
 
+    // === Metod som hjälper till med utskrift för Användare ===
     private static void ShowUserInfo(User user)
     {
         Console.WriteLine($"ID: {user.UserId}");
@@ -137,6 +145,7 @@ class Program
         Console.WriteLine();
     }
 
+    // === Metod som hjälper till med utskrift för Samling ===
     private static void ShowCollectionInfo(Collection collection)
     {
         Console.WriteLine($"ID: {collection.CollectionId}");
