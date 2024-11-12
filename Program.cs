@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using TheCollectorApp;
 
 class Program
 {
     static void Main()
     {
-        // === Testar klassen Collection (Initierar) === 
+        // === Testar klassen Collection (Manuell testning) === 
 
         Console.WriteLine("=== Skapar en ny användare med samlingar ===");
 
