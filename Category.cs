@@ -42,7 +42,7 @@
             return category;
         }
 
-        // Returnerar endast alla fördefinierade kategorier
+        // Returnerar endast fördefinierade kategorier
         public static List<Category> GetAllStandardCategories()
         {
             var standardCategory = new List<Category>();

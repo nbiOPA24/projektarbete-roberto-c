@@ -14,7 +14,6 @@ namespace TheCollectorApp
         public string Email { get; set; }
         public DateTime RegistrationDate { get; } // Ska inte ändras
         public bool IsLoggedIn { get; set; }
-
         // lista med användarens samlingar
         public List<Collection> Collections { get; set; }
 

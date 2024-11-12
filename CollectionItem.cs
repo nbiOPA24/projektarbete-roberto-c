@@ -127,7 +127,7 @@ namespace TheCollectorApp
 		}
 
 		// Uppdaterar det uppskattade värdet på ett samlingsobjekt baserat på ID
-		public static void EstimatedOwnValue(int id, decimal newValue)
+		public static void EstimatedValue(int id, decimal newValue)
 		{
 			foreach (CollectionItem item in items)
 			{

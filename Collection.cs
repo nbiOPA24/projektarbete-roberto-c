@@ -13,10 +13,10 @@ namespace TheCollectorApp
         public string Description { get; set; }
         // Olika typer av samlingar att välja mellan, kan vara fördefinierade eller anpassade
         public CollectionType Type { get; }
-        public List<CollectionItem> Items { get; set; }
         public DateTime CreateDate { get; }
         public User? Owner { get; set; } // Hämtar eller sätter en användare för samlingen. Kan vara null
         public bool IsStandard { get; } // True om samlingen är fördefinierad, annars False
+        public List<CollectionItem> Items { get; set; }
 
         // En statisk konstruktor med fördefinierade samlingar som körs en gång när programmet startar
         static Collection()
