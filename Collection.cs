@@ -135,6 +135,7 @@ namespace TheCollectorApp
                 {
                     collection.CollectionName = newCollectionName;
                     collection.Description = newDescription;
+                    break;
                 }
             }
         }
@@ -148,6 +149,7 @@ namespace TheCollectorApp
                 {
                     collection.CollectionName = newCollectionName;
                     collection.Description = newDescription;
+                    break;
                 }
             }
         }
