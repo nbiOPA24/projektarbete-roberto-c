@@ -1,73 +1,75 @@
-using System;
-using TheCollectorApp;
 
-
-// === Testmeny ===
-
-while (true)
+class Program
 {
-    Console.WriteLine("==== SAMLARAPPEN ====");
-    Console.WriteLine("Välkommen! Skapa gärna ett användarkonto eller logga in om du har ett konto.");
-    Console.WriteLine("Du kan enkelt ändra dina samlingar genom söka på namn eller ID-nummer.");
-    Console.WriteLine();
-    Console.WriteLine("==== KONTO & INLOGGNING ====");
-    Console.WriteLine("1. Skapa ett användarkonto");
-    Console.WriteLine("2. Logga in");
-    Console.WriteLine("3. Logga ut");
-    Console.WriteLine();
-
-    Console.WriteLine("=== KONTOHANTERING ===");
-    Console.WriteLine("4. Se kontouppgifter ");
-    Console.WriteLine("5. Uppdatera uppgifter");
-    Console.WriteLine("6. Ta bort konto ");
-    Console.WriteLine();
-
-    Console.WriteLine("=== SAMLINGAR ===");
-    Console.WriteLine("7. Visa mina samlingar");
-    Console.WriteLine("8. Skapa en ny samling");
-    Console.WriteLine("9. Välj en färdig samling");
-    Console.WriteLine("10. Uppdatera samling");
-    Console.WriteLine("11. Ta bort samling");
-    Console.WriteLine();
-
-    Console.WriteLine("=== SAMLINGSOBJEKT ===");
-    Console.WriteLine("12. Se mina samlingsobjekt");
-    Console.WriteLine("13. Lägg till nytt samlingsobjekt");
-    Console.WriteLine("14. Uppdatera samlingobjekt");
-    Console.WriteLine("15. Ta bort samlingsobjekt");
-    Console.WriteLine();
-
-    Console.WriteLine("==== KATEGORI ====");
-    Console.WriteLine("16. Visa alla kategorier");
-    Console.WriteLine("17. Lägg till ny kategori");
-    Console.WriteLine("18. Uppdatera kategori");
-    Console.WriteLine("19. Ta bort kategori");
-
-    Console.WriteLine();
-    Console.WriteLine("20. Avsluta");
-
-    string? choice = Console.ReadLine();
-
-    if (choice == "20")
+    static void Main()
     {
-        Console.WriteLine("Programmet avslutas. Hej då!");
-        break;
-    }
-    switch (choice)
-    {
-        case "1":
+        // === Testmeny ===
+
+        while (true)
+        {
+            Console.WriteLine("==== SAMLARAPPEN ====");
+            Console.WriteLine("Välkommen! Skapa gärna ett användarkonto eller logga in om du har ett konto.");
+            Console.WriteLine("Du kan enkelt ändra dina samlingar genom söka på namn eller ID-nummer.");
             Console.WriteLine();
-            break;
-        case "4":
+            Console.WriteLine("==== KONTO & INLOGGNING ====");
+            Console.WriteLine("1. Skapa ett användarkonto");
+            Console.WriteLine("2. Logga in");
+            Console.WriteLine("3. Logga ut");
             Console.WriteLine();
-            break;
-        default:
-            Console.WriteLine("Ogiltigt val");
-            break;
+
+            Console.WriteLine("=== KONTOHANTERING ===");
+            Console.WriteLine("4. Se kontouppgifter ");
+            Console.WriteLine("5. Uppdatera uppgifter");
+            Console.WriteLine("6. Ta bort konto ");
+            Console.WriteLine();
+
+            Console.WriteLine("=== SAMLINGAR ===");
+            Console.WriteLine("7. Visa mina samlingar");
+            Console.WriteLine("8. Skapa en ny samling");
+            Console.WriteLine("9. Välj en färdig samling");
+            Console.WriteLine("10. Uppdatera samling");
+            Console.WriteLine("11. Ta bort samling");
+            Console.WriteLine();
+
+            Console.WriteLine("=== SAMLINGSOBJEKT ===");
+            Console.WriteLine("12. Se mina samlingsobjekt");
+            Console.WriteLine("13. Lägg till nytt samlingsobjekt");
+            Console.WriteLine("14. Uppdatera samlingobjekt");
+            Console.WriteLine("15. Ta bort samlingsobjekt");
+            Console.WriteLine();
+
+            Console.WriteLine("==== KATEGORI ====");
+            Console.WriteLine("16. Visa alla kategorier");
+            Console.WriteLine("17. Lägg till ny kategori");
+            Console.WriteLine("18. Uppdatera kategori");
+            Console.WriteLine("19. Ta bort kategori");
+
+            Console.WriteLine();
+            Console.WriteLine("20. Avsluta");
+
+            string? choice = Console.ReadLine();
+
+            if (choice == "20")
+            {
+                Console.WriteLine("Programmet avslutas. Hej då!");
+                break;
+            }
+            switch (choice)
+            {
+                case "1":
+                    Console.WriteLine();
+                    break;
+                case "4":
+                    Console.WriteLine();
+                    break;
+                default:
+                    Console.WriteLine("Ogiltigt val");
+                    break;
+            }
+            Console.WriteLine();
+        }
     }
-    Console.WriteLine();
 }
-
 
 /*
 
