@@ -74,6 +74,7 @@ namespace TheCollectorApp
 					item.ItemValue = newValue;
 					item.Condition = newCondition;
 					item.Notes = newNotes;
+					break;
 				}
 			}
 		}
@@ -90,6 +91,7 @@ namespace TheCollectorApp
 					item.ItemValue = newValue;
 					item.Condition = newCondition;
 					item.Notes = newNotes;
+					break;
 				}
 			}
 		}
