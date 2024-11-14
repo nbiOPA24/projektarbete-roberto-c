@@ -74,8 +74,8 @@
 
         /*
                 // Förenklad version av metoden. Returnerar en kategori baserat på namn
-                public static Category? GetCategoryByName(string name) // Returnerar värdet som kan var null
-                {   // LINQ-metod FirstOrDefault returnerar första kategorin var namn matchar med det sökta namnet. Lambda-uttryck användas som sökvilkor.
+                public static Category? GetCategoryByName(string name) // Category? Kan returnera ett värde eller vara null
+                {   // LINQ-metod FirstOrDefault returnerar första kategorin vars namn matchar det sökta namnet (texten). Ett Lambda-uttryck användas som sökvilkor.
                     return categories.FirstOrDefault(c => c.CategoryName.Contains(name));
                 }
         */
@@ -97,8 +97,8 @@
 
         /*
                 // Förenklad version av metoden. Returnerar en kategori baserat på ID
-                public static Category? GetCategoryById(int id) // Returnerar värdet som kan var null
-                {   // LINQ-metod FirstOrDefault returnerar första kategorin som CategoryId matchar med det sökta ID:t. Lambda-uttryck användas som sökvilkor.
+                public static Category? GetCategoryById(int id) // Category? Kan returnera ett värde eller vara null
+                {   // LINQ-metod FirstOrDefault returnerar första kategorin vars namn matchar det sökta namnet (texten). Ett Lambda-uttryck användas som sökvilkor.
                     return categories.FirstOrDefault(c => c.CategoryId == id);
                 }
         */
