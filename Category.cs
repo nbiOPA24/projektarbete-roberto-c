@@ -72,6 +72,14 @@
             return categoryName;
         }
 
+        /*
+                // Förenklad version av metoden GetCategoryByName. Returnerar en kategori baserat på namn
+                public static Category? GetCategoryByName(string name) // Returnerar värdet kan var null
+                {   // LINQ-metod FirstOrDefault returnerar första kategorin var namn matchar med det sökta namnet. Lambda-uttryck användas som sökvilkor.
+                    return categories.FirstOrDefault(c => c.CategoryName.Contains(name));
+                }
+        */
+
         // Returnerar en kategori baserat på ID
         public static List<Category> GetCategoryById(int id)
         {
@@ -86,6 +94,14 @@
             }
             return categoryId;
         }
+
+        /*
+                // Förenklad version av metoden GetCategoryByID. Returnerar en kategori baserat på ID
+                public static Category? GetCategoryById(int id) // Returnerar ett objekt som kan var null
+                {   // LINQ-metod FirstOrDefault returnerar första kategorin som CategoryId matchar med det sökta ID:t. Lambda-uttryck användas som sökvilkor.
+                    return categories.FirstOrDefault(c => c.CategoryId == id);
+                }
+        */
 
         // Uppdaterar namn och beskrivning för en kategori baserat på namn
         public static void UpdateCategoryByName(string name, string newName, string newDescription)
@@ -110,6 +126,7 @@
                 {
                     category.CategoryName = newName;
                     category.Description = newDescription;
+                    break;
                 }
             }
         }
