@@ -9,7 +9,7 @@ class Program
         {
             Console.WriteLine("==== SAMLARAPPEN ====");
             Console.WriteLine("Välkommen! Skapa gärna ett användarkonto eller logga in om du har ett konto.");
-            Console.WriteLine("Du kan enkelt ändra dina samlingar genom söka på namn eller ID-nummer.");
+            Console.WriteLine("Du kan enkelt ändra dina samlingar och objekt genom att söka på namn eller ID-nummer.");
             Console.WriteLine();
             Console.WriteLine("==== KONTO & INLOGGNING ====");
             Console.WriteLine("1. Skapa ett användarkonto");
@@ -18,9 +18,9 @@ class Program
             Console.WriteLine();
 
             Console.WriteLine("=== KONTOHANTERING ===");
-            Console.WriteLine("4. Se kontouppgifter ");
+            Console.WriteLine("4. Se kontouppgifter");
             Console.WriteLine("5. Uppdatera uppgifter");
-            Console.WriteLine("6. Ta bort konto ");
+            Console.WriteLine("6. Ta bort konto");
             Console.WriteLine();
 
             Console.WriteLine("=== SAMLINGAR ===");
@@ -85,7 +85,7 @@ class Program
         User.AddUser(user2);
         User.AddUser(user3);
 
-        Console.WriteLine("=== Alla användare === ");
+        Console.WriteLine("=== Alla användare ===");
         foreach (var user in User.GetAllUsers())
         {
             ShowAllUserInfo(user);
@@ -122,7 +122,7 @@ class Program
         Console.WriteLine("=== Testar inloggning för Isabell ===");
         //Jämför användarnamn och lösenord 
         bool loginSuccess = user1.LoginUser("Bella", "bella123");
-        // Visar att användaren (Anders) har lyckats logga in
+        // Visar att användaren (Isabell) har lyckats logga in
         Console.WriteLine($"Lyckad inloggning! Välkommen, IsLoggedIn är {loginSuccess}.");
         Console.WriteLine($"Användaren är inloggad: {user1.IsLoggedIn}");
         Console.WriteLine();
@@ -150,7 +150,7 @@ class Program
         Console.WriteLine();
     }
 
-    //=== Metod som hjälper till med utskrift för Samlingsobjekt ===
+    // === Metod som hjälper till med utskrift för Användare ===
     private static void ShowAllUserInfo(User user)
     {
         Console.WriteLine($"ID: {user.UserId}");
@@ -167,7 +167,7 @@ class Program
 /*
         // === Testar klassen Category (Manuell testning) ===
 
-        Console.WriteLine("=== Alla fördefinierade kategorier (1-6)===");
+        Console.WriteLine("=== Alla fördefinierade kategorier (1-6) ===");
         foreach (var category in Category.GetAllStandardCategories())
         {
             ShowCategoriesInfo(category);
@@ -238,7 +238,7 @@ class Program
         }
 
     }
-    // Metod för att hämta info om alla kategorier
+    // === Metod som hjälper till med utskrift för katogrier ===
     private static void ShowCategoriesInfo(Category category)
     {
         Console.WriteLine($"ID: {category.CategoryId}");
@@ -327,7 +327,7 @@ class Program
         }
     }
 
-    // Metod för att hämta info om alla samlarobjekt
+    // === Metod som hjälper till med utskrift för Samlingsobjekt ===
     private static void ShowAllItemInfo(CollectionItem item)
     {
         Console.WriteLine($"ID: {item.ItemId}");
