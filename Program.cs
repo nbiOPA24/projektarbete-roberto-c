@@ -74,6 +74,7 @@ class Program
 /*
 
         // === Testar klassen User (Manuell testning) ===
+        // Testar funktionalitet genom att skapa instanser av klassen User
 
         // Skapar tre användare
         User user1 = new User("Anders", "Palla", "AndersTheWall", "malvakt123", "malvakt@mail.com");
@@ -166,6 +167,7 @@ class Program
 
 /*
         // === Testar klassen Category (Manuell testning) ===
+        // Testar funktionalitet genom att skapa instanser av klassen Category
 
         Console.WriteLine("=== Alla fördefinierade kategorier (1-6) ===");
         foreach (var category in Category.GetAllStandardCategories())
@@ -174,9 +176,9 @@ class Program
         }
 
         Console.WriteLine("=== Skapar anpassade kategorier (ID: 7, 8, 9) ===");
-        var customCategory1 = Category.AddCustomCategory("Mynt & Numismatik", "Olika typer av mynt och sedlar: Guldmynt, Kopparmynt, Mynthäften");
-        var customCategory2 = Category.AddCustomCategory("Smycken & Ädelstenar", "Olika typer av smycken och accessoarer: Klockor, Ringar, Halsband");
-        var customCategory3 = Category.AddCustomCategory("Motorcyklar", "Olika typer av motorcyklar: Sportmotorcyklar, Cruisers, Touringmotorcyckel");
+        var customCategory1 = Category.AddCustomCategory("Mynt & Numismatik", "Olika typer av mynt och sedlar: Guldmynt, Kopparmynt, Mynthäften", false);
+        var customCategory2 = Category.AddCustomCategory("Smycken & Ädelstenar", "Olika typer av smycken och accessoarer: Klockor, Ringar, Halsband, false");
+        var customCategory3 = Category.AddCustomCategory("Motorcyklar", "Olika typer av motorcyklar: Sportmotorcyklar, Cruisers, Touringmotorcyckel, false");
         Console.WriteLine();
 
         Console.WriteLine("=== Alla Kategorier: Fördefinierade & Anpassade (ID: 1-9) ===");
@@ -252,6 +254,7 @@ class Program
 
 /*
         //=== Testar klassen CollectionItem (Manuell testning) ===
+        // Testar funktionalitet genom att skapa instanser av klassen CollectionItem        
 
         var item1 = new CollectionItem("En man som heter Ove", "En svensk roman om en surmulen äldre man som sakta dras in i grannarnas liv och blir påverkad av deras värme och vänlighet. ", 199, ItemCondition.VeryGood, "Boken är lite sliten på den första sidan.");
         var item2 = new CollectionItem("The Matrix", "Filmen är en sci-fi-film där en hacker upptäcker att verkligheten är en simulering styrd av maskiner, och han måste kämpa för mänsklighetens frihet.", 99, ItemCondition.Poor, "Film är trasig och går inte att använda. Men är ett bra minne och kan ställas i bokhyllan.");
@@ -342,7 +345,8 @@ class Program
 
 
 /*
-        // === Testar klassen Collection (Manuell testning) === 
+        // === Testar klassen Collection (Manuell testning) ===
+        // Testar funktionalitet genom att skapa instanser av klassen Collection       
 
         Console.WriteLine("=== Skapar en ny användare med samlingar ===");
 
