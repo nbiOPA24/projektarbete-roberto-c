@@ -11,27 +11,29 @@
         public string Description { get; set; }
         public CategoryType Type { get; }
         // Lista med alla samlingsobjekt som tillhör kategorin
+        public bool IsStandard { get; } // True om kategorin är fördefinierad, annars False
         public List<CollectionItem> Items { get; set; }
 
         // En statisk konstruktor som körs när programmet startas (fördefinierade kategorier)
         static Category()
         {
-            categories.Add(new Category("Litteratur & Böcker", "Olika format av litterära verk: Inbunden, Häftad, Pocket, E-bok, Kartonnage", CategoryType.Books));
-            categories.Add(new Category("Film & Video", "Film- och videoformat: DVD, Blu-ray, VHS, LaserDisc, Betamax", CategoryType.Films));
-            categories.Add(new Category("Musik & Ljudmedier", "Musikformat och ljudmedier: Vinylskiva, Kassettband, CD, MiniDisc", CategoryType.Music));
-            categories.Add(new Category("Leksaker & Figurer", "Olika typer av leksaker: LEGO, Figurer, Dockor, Pussel", CategoryType.Toys));
-            categories.Add(new Category("Spel & Interaktiv Media", "Digitala och analoga spel: TV-spel, Datorspel, Brädspel", CategoryType.Games));
-            categories.Add(new Category("Konst & Konsthantverk", "Olika konstformer: Målning, Skulptur, Keramik, Textiler", CategoryType.Art));
+            categories.Add(new Category("Litteratur & Böcker", "Olika format av litterära verk: Inbunden, Häftad, Pocket, E-bok, Kartonnage", CategoryType.Books, true));
+            categories.Add(new Category("Film & Video", "Film- och videoformat: DVD, Blu-ray, VHS, LaserDisc, Betamax", CategoryType.Films, true));
+            categories.Add(new Category("Musik & Ljudmedier", "Musikformat och ljudmedier: Vinylskiva, Kassettband, CD, MiniDisc", CategoryType.Music, true));
+            categories.Add(new Category("Leksaker & Figurer", "Olika typer av leksaker: LEGO, Figurer, Dockor, Pussel", CategoryType.Toys, true));
+            categories.Add(new Category("Spel & Interaktiv Media", "Digitala och analoga spel: TV-spel, Datorspel, Brädspel", CategoryType.Games, true));
+            categories.Add(new Category("Konst & Konsthantverk", "Olika konstformer: Målning, Skulptur, Keramik, Textiler", CategoryType.Art, true));
         }
 
-        // Publik konstruktor för att skapa en ny kategori (Fördefinerad och Anpassad)
-        public Category(string name, string description, CategoryType type)
+        // Publik konstruktor för att skapa en ny kategori. isStandard=false skapar en anpassad kategori, True skapar en fördefinierad kategori
+        public Category(string name, string description, CategoryType type, bool isStandard = false) // isStandard är False när en användaren skapar en ny anpassad kategori
         {
             CategoryId = nextId++;
             CategoryName = name;
             Description = description;
             Type = type;
             Items = new List<CollectionItem>(); // En tom lista för samlarobjekt som tillhör kategorin
+            IsStandard = isStandard;
         }
 
         // Skapar en anpassade kategori och lägger till den i listan categories
@@ -73,7 +75,7 @@
         }
 
         /*
-                // Förenklad version av metoden. Returnerar en kategori baserat på namn
+                // Förenklad version av metoden GetCategoryByName. Returnerar en kategori baserat på namn
                 public static Category? GetCategoryByName(string name) // Category? Kan returnera ett värde eller vara null
                 {   // LINQ-metod FirstOrDefault returnerar första kategorin vars namn matchar det sökta namnet (texten). Ett Lambda-uttryck användas som sökvilkor.
                     return categories.FirstOrDefault(c => c.CategoryName.Contains(name));
@@ -96,9 +98,9 @@
         }
 
         /*
-                // Förenklad version av metoden. Returnerar en kategori baserat på ID
+                // Förenklad version av metoden GetCategoryById. Returnerar en kategori baserat på ID
                 public static Category? GetCategoryById(int id) // Category? Kan returnera ett värde eller vara null
-                {   // LINQ-metod FirstOrDefault returnerar första kategorin vars namn matchar det sökta namnet (texten). Ett Lambda-uttryck användas som sökvilkor.
+                {   // LINQ-metod FirstOrDefault returnerar första kategorin vars ID matchar det sökta ID:t. Ett Lambda-uttryck användas som sökvilkor.
                     return categories.FirstOrDefault(c => c.CategoryId == id);
                 }
         */
@@ -157,7 +159,7 @@
             }
         }
 
-        // Retunerar alla kategorier (både fördefinierade och anpassade)
+        // Returnerar alla kategorier (både fördefinierade och anpassade)
         public static List<Category> GetAllCategories()
         {
             return categories;
