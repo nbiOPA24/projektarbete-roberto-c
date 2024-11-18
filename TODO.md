@@ -21,8 +21,8 @@ Collection (Samling)
 
 - [x] Skapa klassen Collection
 - [x] Implementera så att användare kan skapa, redigera eller ta bort samlingar
-- [x] Skapa förregisterade samlingar
 - [x] Implementera sökfunktion så att användare kan söka bland samlingar
+- [x] Skapa förregisterade samlingar
 - [ ] Implementera funktion för att lagra samlingar
 
 ---
@@ -30,9 +30,9 @@ Collection (Samling)
 CollectionItem (Samlingsobjekt)
 
 - [x] Skapa klassen CollectionItem
-- [ ] Skapa förregisterade exempelobjekt
 - [x] Implementera så att användare kan skapa, redigera eller ta bort objekt
 - [x] Implementera sökfunktion så att användare kan söka bland objekt
+- [ ] Skapa förregisterade exempelobjekt
 - [ ] Implementera funktion för att lagra objekt
 
 ---

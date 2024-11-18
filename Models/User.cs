@@ -1,4 +1,4 @@
-namespace TheCollectorApp
+namespace TheCollectorApp.Models
 {
     public class User
     {

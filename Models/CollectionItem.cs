@@ -1,10 +1,12 @@
-namespace TheCollectorApp
+using TheCollectorApp.Enums;
+
+namespace TheCollectorApp.Models
 {
 	public class CollectionItem
 	{
 		private static int nextId = 1; // Ökar automatiskt med 1 för varje nytt samlingsobjekt
-		private static List<CollectionItem> items = new List<CollectionItem>(); // Lista som lagrar alla samlingsobjekt
-
+									   // Lista som lagrar alla samlingsobjekt
+		private static List<CollectionItem> items = new List<CollectionItem>();
 		public int ItemId { get; }
 		public string ItemName { get; set; }
 		public string Description { get; set; }

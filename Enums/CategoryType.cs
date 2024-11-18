@@ -1,4 +1,4 @@
-namespace TheCollectorApp
+namespace TheCollectorApp.Enums
 {
     public enum CategoryType
     {

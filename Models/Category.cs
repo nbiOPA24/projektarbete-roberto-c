@@ -1,4 +1,6 @@
-﻿namespace TheCollectorApp
+﻿using TheCollectorApp.Enums;
+
+namespace TheCollectorApp.Models
 {
     public class Category
     {

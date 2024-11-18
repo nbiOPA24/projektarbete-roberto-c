@@ -1,11 +1,11 @@
-using System.Reflection.Metadata;
+using TheCollectorApp.Enums;
 
-namespace TheCollectorApp
+namespace TheCollectorApp.Models
 {
     public class Collection
     {
         private static int nextId = 1; // Ökar automatiskt med 1 för varje ny samling
-        // Lista som lagrar alla samlingar
+        // Lista som lagrar alla samlingar (både fördefinierade och anpassade)
         private static List<Collection> collections = new List<Collection>();
 
         public int CollectionId { get; }
