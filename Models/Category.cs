@@ -82,8 +82,6 @@ namespace TheCollectorApp.Models
                 {   // LINQ-metod FirstOrDefault returnerar första kategorin vars namn matchar det sökta namnet (texten). Ett Lambda-uttryck användas som sökvilkor.
                     return categories.FirstOrDefault(c => c.CategoryName.Contains(name));
                 }
-
-                OBS: Denna metod saknar undantagshantering. Även övriga metoder kan sakna detta.
         */
 
         // Returnerar en kategori baserat på ID
@@ -107,8 +105,6 @@ namespace TheCollectorApp.Models
                 {   // LINQ-metod FirstOrDefault returnerar första kategorin vars ID matchar det sökta ID:t. Ett Lambda-uttryck användas som sökvilkor.
                     return categories.FirstOrDefault(c => c.CategoryId == id);
                 }
-
-                OBS: Denna metod saknar undantagshantering. Även övriga metoder kan sakna detta.
         */
 
         // Uppdaterar namn och beskrivning för en kategori baserat på namn

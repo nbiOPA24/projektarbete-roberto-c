@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using TheCollectorApp.Enums;
 
 namespace TheCollectorApp.Models
@@ -14,10 +15,20 @@ namespace TheCollectorApp.Models
 		public DateTime AddedDate { get; }
 		public ItemCondition Condition { get; set; }
 		public string Notes { get; set; }
+
+		public bool IsExempelObject { get; } // True om samlingen är fördefinierad, annars False
+
 		// List över kategorier som samlingsobjektet tillhör
 		public List<Category> Categories { get; set; }
 
-		public CollectionItem(string name, string description, decimal itemValue, ItemCondition condition, string notes)
+		// En statisk konstruktor med testobjekt som körs en gång när programmet startar
+		static CollectionItem()
+		{
+			// Exempelobjekt utan användare
+			items.Add(new CollectionItem("Exempelobjekt", "Detta är en testprodukt", 10, ItemCondition.Decent, "Detta är ett exempelobjekt"));
+		}
+
+		public CollectionItem(string name, string description, decimal itemValue, ItemCondition condition, string notes, bool isExempelObject = false)
 		{
 			ItemId = nextId++; // Tilldelar nuvarande värdet. Sedan ökar den med ett steg
 			ItemName = name;
@@ -26,6 +37,7 @@ namespace TheCollectorApp.Models
 			AddedDate = DateTime.Now;
 			Condition = condition;
 			Notes = notes;
+			IsExempelObject = isExempelObject;
 			Categories = new List<Category>(); // En tom lista för kategorier som samlarobjektet tillhör
 		}
 
