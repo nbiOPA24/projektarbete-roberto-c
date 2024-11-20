@@ -6,16 +6,26 @@ namespace TheCollectorApp.Models
         // Lista som lagrar alla användare
         private static List<User> users = new List<User>();
 
+        // Ska jag använda Data Annotations för hantera validering?
+
         public int UserId { get; }
+
         public string FirstName { get; set; }
+
         public string SecondName { get; set; }
+
         public string UserName { get; set; }
-        private string Password { get; set; } // Private för skydda lösenordet
+
+        public string Password { get; private set; } // Private för skydda lösenordet
+
         public string Email { get; set; }
+
         public DateTime RegistrationDate { get; } // Ska inte ändras
+
         public bool IsLoggedIn { get; set; }
         // lista med användarens samlingar
         public List<Collection> Collections { get; set; }
+
 
         public User(string firstName, string secondName, string userName, string password, string email)
         {
