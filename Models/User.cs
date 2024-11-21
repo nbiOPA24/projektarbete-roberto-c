@@ -1,35 +1,76 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+
 namespace TheCollectorApp.Models
 {
+    [Table("Users")]
     public class User
     {
-        private static int nextId = 1;
+        //private static int nextId = 1;
         // Lista som lagrar alla användare
         private static List<User> users = new List<User>();
 
         // Ska jag använda Data Annotations för hantera validering?
 
-        public int UserId { get; }
+        [Key]
+        [Display(Name = "Användarens ID")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // Ökar automatiskt
+        public int UserId { get; set; }
 
-        public string FirstName { get; set; }
+        [Display(Name = "Förnamn")]
+        [Required(ErrorMessage = "Förnamn måste anges")]
+        [StringLength(30)]
+        [Column("FirstName")] // Kolumnnamn i databas
+        public string? FirstName { get; set; }
 
-        public string SecondName { get; set; }
+        [Display(Name = "Efternamn")]
+        [Required(ErrorMessage = "Efternamn måste anges")]
+        [StringLength(30)]
+        [Column("SecondName")] // Kolumnnamn i databas
+        public string? SecondName { get; set; }
 
-        public string UserName { get; set; }
+        [Display(Name = "Användarnamn")]
+        [Required(ErrorMessage = "Användarnamn måste anges")]
+        [StringLength(50)]
+        [Column("UserName")] // Kolumnnamn i databas
+        public string? UserName { get; set; }
 
-        public string Password { get; private set; } // Private för skydda lösenordet
+        [Display(Name = "Lösenord")]
+        [Required(ErrorMessage = "Lösenord måste anges")]
+        [StringLength(30)]
+        [Column("Password")] // Kolumnnamn i databas
+        public string? Password { get; private set; } // Private för skydda lösenordet
 
-        public string Email { get; set; }
+        [Display(Name = "E-post")]
+        [Required(ErrorMessage = "E-post måste anges")]
+        [RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", ErrorMessage = "E-postadressen måste innehålla @")]
+        [StringLength(30)]
+        [Column("Email")] // Kolumnnamn i databas
+        public string? Email { get; set; }
 
+        [Column("RegistrationDate")]
         public DateTime RegistrationDate { get; } // Ska inte ändras
 
         public bool IsLoggedIn { get; set; }
         // lista med användarens samlingar
-        public List<Collection> Collections { get; set; }
+
+        public virtual ICollection<Collection> Collections { get; set; }
+        // public List<Collection> Collections { get; set; }
 
 
-        public User(string firstName, string secondName, string userName, string password, string email)
+        // En tom konstruktor för Entity Framwork (EF)
+        public User()
         {
-            UserId = nextId++;
+            Collections = new List<Collection>();
+            RegistrationDate = DateTime.Now;
+            IsLoggedIn = false;
+        }
+
+
+        public User(string firstName, string secondName, string userName, string password, string email) : this() // Anropar tomma konskturon User
+        {
+            //UserId = nextId++;
             FirstName = firstName;
             SecondName = secondName;
             UserName = userName;
@@ -40,11 +81,15 @@ namespace TheCollectorApp.Models
             Collections = new List<Collection>();
         }
 
+
         // Lägger till en ny användare i listan users
+
         public static void AddUser(User user)
         {
             users.Add(user);
         }
+
+
 
         // Returnerar en användare baserat på namn
         public static List<User> GetUserByName(string name)
