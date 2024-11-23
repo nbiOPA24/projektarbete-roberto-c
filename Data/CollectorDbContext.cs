@@ -11,10 +11,10 @@ namespace TheCollectorApp.Data
     public class CollectorDbContext : DbContext
     {
         // Varje DBset representerar en tabell i databasen
-        public DbSet<User> Users { get; set; }
-        public DbSet<Collection> Collections { get; set; }
-        public DbSet<CollectionItem> CollectionItems { get; set; }
-        public DbSet<Category> Categories { get; set; }
+        public required DbSet<User> Users { get; set; } // måste ha ett värde med required
+        public required DbSet<Collection> Collections { get; set; }
+        public required DbSet<CollectionItem> CollectionItems { get; set; }
+        public required DbSet<Category> Categories { get; set; }
 
         // Databasoppling
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -62,7 +62,7 @@ namespace TheCollectorApp.Data
             // En samlingar har bara en användare
             .WithOne(c => c.Owner)
             // Nyckel kopplat till ID
-            .HasForeignKey(c => c.UserId);
+            .HasForeignKey(c => c.UserId); // Huvudnycklar
 
             modelBuilder.Entity<Collection>()
             // En samlingar har många samlingsobjekt
